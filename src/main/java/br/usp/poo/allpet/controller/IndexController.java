@@ -17,7 +17,7 @@ public class IndexController {
 	@GetMapping
 	public ModelAndView getIndex() {
 		IndexViewModel vm = indexService.getIndexViewModel();
-		return new ModelAndView("index", vm.getParams());
+		return new ModelAndView("index/inicio", vm.getParams());
 	}
 	
 }
