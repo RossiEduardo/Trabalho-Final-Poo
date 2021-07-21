@@ -15,8 +15,8 @@ public class UsuarioConfig {
 	@Bean
 	CommandLineRunner commandLineRunner(UsuarioRepository usuarioRepository) {
 		return args -> {
-			Usuario usuario1 = new Usuario(null, "Lucas Almeida");
-			Usuario usuario2 = new Usuario(null, "Adrio Oliveira");
+			Usuario usuario1 = new Usuario(null, "Lucas Almeida", "lucas@hotmail.com", "12345678", "123.145.321-90");
+			Usuario usuario2 = new Usuario(null, "Adrio Oliveira", "adrio@gmail.com", "password", "123.432.112-39");
 			
 			usuarioRepository.saveAll(List.of(usuario1, usuario2));
 		};

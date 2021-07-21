@@ -22,5 +22,14 @@ public class Usuario {
 	
 	@Column(length = 100, nullable = false)
 	private String nome;
-	
+
+	@Column(length = 100, nullable = false)
+	private String email;
+
+	@Column(length = 100, nullable = false)
+	private String password;
+
+	@Column(length = 20, nullable = false)
+	private String documento;
+
 }
