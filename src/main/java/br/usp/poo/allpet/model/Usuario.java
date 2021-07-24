@@ -32,4 +32,23 @@ public class Usuario {
 	@Column(length = 20, nullable = false)
 	private String documento;
 
+	public Short getId() {
+		return id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public String getDocumento() {
+		return documento;
+	}
 }

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 import br.usp.poo.allpet.model.Usuario;
 import br.usp.poo.allpet.repository.UsuarioRepository;
-
+/*
 @Configuration
 public class UsuarioConfig {
 	
@@ -22,4 +22,4 @@ public class UsuarioConfig {
 		};
 	}
 	
-}
+}*/
