@@ -4,7 +4,6 @@ import br.usp.poo.allpet.enums.Animal;
 import br.usp.poo.allpet.model.Anuncio;
 import br.usp.poo.allpet.service.AnuncioService;
 import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
-import br.usp.poo.allpet.viewmodel.BuscaViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,11 +22,16 @@ public class AnuncioController {
     @GetMapping("/{id}")
     public ModelAndView getAnuncio(@PathVariable(value="id") short id) {
         AnuncioViewModel avm = anuncioService.getAnuncio(id);
-        return new ModelAndView("anuncio", avm.getParams());
+        return new ModelAndView("anuncio/anuncio", avm.getParams());
+    }
+
+    @GetMapping("/criar")
+    public ModelAndView criar() {
+        return new ModelAndView("anuncio/criar");
     }
 
     @PostMapping("/criar")
-    public void cadastrar(@RequestParam String titulo,
+    public void criar(@RequestParam String titulo,
                           @RequestParam short user_id,
                           @RequestParam String cidade,
                           @RequestParam String endereco,
@@ -44,8 +48,8 @@ public class AnuncioController {
     @GetMapping("/busca")
     public ModelAndView busca(@RequestParam(required=false) String regiao, @RequestParam(required=false) Animal animal) {
 
-        BuscaViewModel bvm = anuncioService.buscar(regiao, animal);
-        return new ModelAndView("busca", bvm.getParams());
+        AnuncioViewModel avm = anuncioService.buscar(regiao, animal);
+        return new ModelAndView("anuncio/busca", avm.getParams());
     }
 
 }

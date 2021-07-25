@@ -6,7 +6,6 @@ import br.usp.poo.allpet.model.Usuario;
 import br.usp.poo.allpet.repository.AnuncioRepository;
 import br.usp.poo.allpet.repository.UsuarioRepository;
 import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
-import br.usp.poo.allpet.viewmodel.BuscaViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,13 +29,13 @@ public class AnuncioService {
         anuncioRepository.save(newAnuncio);
     }
 
-    public BuscaViewModel buscar(String cidade, Animal animal) {
+    public AnuncioViewModel buscar(String cidade, Animal animal) {
         if (cidade != null && animal != null)
-            return new BuscaViewModel(anuncioRepository.getByCidadeAnimal(cidade, animal));
+            return new AnuncioViewModel(anuncioRepository.getByCidadeAnimal(cidade, animal));
         if (animal == null)
-            return new BuscaViewModel(anuncioRepository.getByCidade(cidade));
+            return new AnuncioViewModel(anuncioRepository.getByCidade(cidade));
 
-        return new BuscaViewModel(anuncioRepository.getByAnimal(animal));
+        return new AnuncioViewModel(anuncioRepository.getByAnimal(animal));
     }
 
 }

@@ -13,6 +13,10 @@ public class AnuncioViewModel {
         params.put("anuncio", anuncio);
     }
 
+    public AnuncioViewModel(List<Anuncio> anuncios) {
+        params.put("anuncios", anuncios);
+    }
+
     public Map<String, Object> getParams() {
         return params;
     }
