@@ -6,4 +6,5 @@ import br.usp.poo.allpet.model.Anuncio;
 
 public interface AnuncioRepository extends JpaRepository<Anuncio, Integer> {
 
+
 }

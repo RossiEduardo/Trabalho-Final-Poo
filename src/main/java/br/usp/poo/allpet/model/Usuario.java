@@ -37,4 +37,5 @@ public class Usuario {
 
 	@Column(length = 12, nullable = false)
 	private String senha;
+
 }
