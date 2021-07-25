@@ -13,12 +13,12 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @GetMapping("/signup")
+    @GetMapping("/cadastro")
     public ModelAndView getCadastro() {
         return new ModelAndView("index/cadastro");
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/cadastro")
     public String addUser(@RequestParam String email, @RequestParam String nome, @RequestParam String senha, @RequestParam String cpf,
                           @RequestParam String cidade, @RequestParam String telefone) {
         return usuarioService.addUser(

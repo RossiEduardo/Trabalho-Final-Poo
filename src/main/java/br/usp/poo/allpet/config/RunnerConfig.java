@@ -51,8 +51,21 @@ public class RunnerConfig {
 					null,
 					(short) 1
 			);
+
+			Anuncio anuncio2 = new Anuncio(
+					null,
+					"Garfield",
+					"É um gato camarada",
+					"Avenida São Carlos",
+					"São Carlos",
+					"164565161",
+					"lucasf.almeida@usp.br",
+					Animal.GATO,
+					null,
+					(short) 1
+			);
 			
-			anuncioRepository.save(anuncio);
+			anuncioRepository.saveAll(List.of(anuncio, anuncio2));
 		};
 	}
 	
