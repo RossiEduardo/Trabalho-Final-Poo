@@ -7,33 +7,20 @@
 	<body>
 		<#include "/components/header.ftl"/>
 		<#include "/components/user-space.ftl"/>
-		
-        <main>
-            <div id="main-content">
-                <form class="filtros" method="GET">
-                    <p class="label">Filtros</p>
-
-                    <label for="fname">Região</label>
-                    <input type="text" />
-                    <label for="fname">Animal</label>
-                    <select>
-                        <option disabled selected value>Selecione</option>
-                        <option value="cachorro">Cachorro</option>
-                        <option value="gato">Gato</option>
-                    </select>
-                    <input type="submit" value="Filtrar" />
-                </form>
-                <div class="postagens">
-                    <div class="postagem">
-                        <img src="cachorro1.jpeg" />
-                    </div>
-                </div>
-            </div>
-        </main>
 
 	    <ul>
-	        <#list usuarios as usuario>
-			  	<li>${usuario.id} - ${usuario.nome}</li>
+	        <#list anuncios as anuncio>
+			  	<li>
+                    <h2>Anúncio ${anuncio.id}</p>
+                    <p>Título: ${anuncio.titulo}</p>
+                    <p>Descrição: ${anuncio.descricao}</p>
+                    <p>Endereço: ${anuncio.endereco}</p>
+                    <p>Cidade: ${anuncio.cidade}</p>
+                    <p>Telefone: ${anuncio.telefone}</p>
+                    <p>E-mail: ${anuncio.email}</p>
+                    <p>Animal (0 cachorro; 1 gato): ${anuncio.animal}</p>
+                    <p>ID do usuário: ${anuncio.usuario}</p>
+                </li>
 			</#list>
 		</ul>
 	</body>
