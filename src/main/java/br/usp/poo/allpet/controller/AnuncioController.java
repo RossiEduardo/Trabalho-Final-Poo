@@ -4,7 +4,6 @@ import br.usp.poo.allpet.enums.Animal;
 import br.usp.poo.allpet.model.Anuncio;
 import br.usp.poo.allpet.service.AnuncioService;
 import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
-import br.usp.poo.allpet.viewmodel.BuscaViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -44,8 +43,8 @@ public class AnuncioController {
     @GetMapping("/busca")
     public ModelAndView busca(@RequestParam(required=false) String regiao, @RequestParam(required=false) Animal animal) {
 
-        BuscaViewModel bvm = anuncioService.buscar(regiao, animal);
-        return new ModelAndView("busca", bvm.getParams());
+        AnuncioViewModel avm = anuncioService.buscar(regiao, animal);
+        return new ModelAndView("busca", avm.getParams());
     }
 
 }
