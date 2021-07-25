@@ -49,8 +49,8 @@ public class RunnerConfig {
 					"lucasf.almeida@usp.br",
 					Animal.CACHORRO,
 					null,
-					usuario1
-				);
+					(short) 1
+			);
 			
 			anuncioRepository.save(anuncio);
 		};

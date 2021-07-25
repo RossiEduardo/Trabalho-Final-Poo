@@ -19,17 +19,17 @@ public class UsuarioController {
     }
 
     @PostMapping("/signup")
-    public String addUser(@RequestParam String email, @RequestParam String nome, @RequestParam String password, @RequestParam String documento) {
+    public String addUser(@RequestParam String email, @RequestParam String nome, @RequestParam String senha, @RequestParam String cpf,
+                          @RequestParam String cidade, @RequestParam String telefone) {
         return usuarioService.addUser(
-                email,
-                nome,
-                password,
-                documento
+                nome, email,
+                senha, cpf,
+                cidade, telefone
         );
     }
     @PostMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String password) {
-        return usuarioService.login(email, password);
+    public String login(@RequestParam String email, @RequestParam String senha) {
+        return usuarioService.login(email, senha);
     }
 
 }

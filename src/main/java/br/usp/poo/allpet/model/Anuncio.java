@@ -48,8 +48,7 @@ public class Anuncio {
 	@Lob
 	private byte[] foto;
 	
-	@ManyToOne
-	@JoinColumn(nullable = false, name = "usuario_id")
-	private Usuario usuario;
+	@Column(nullable = false)
+	private Short usuario;
 	
 }

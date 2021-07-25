@@ -1,5 +1,6 @@
 package br.usp.poo.allpet.controller;
 
+import br.usp.poo.allpet.enums.Animal;
 import br.usp.poo.allpet.model.Anuncio;
 import br.usp.poo.allpet.service.AnuncioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,16 @@ public class AnuncioController {
 
     @PostMapping("/cadastrar")
     public void cadastrar(@RequestParam String titulo,
-                          @RequestParam int usuario,
+                          @RequestParam short user_id,
                           @RequestParam String cidade,
-                          @RequestParam String estado,
+                          @RequestParam String endereco,
                           @RequestParam String descricao,
-                          @RequestParam String data,
-                          @RequestParam short animal) {
+                          @RequestParam String telefone,
+                          @RequestParam byte[] foto,
+                          @RequestParam String email,
+                          @RequestParam Animal animal) {
 
-        anuncioService.cadastrar(titulo, usuario, cidade, estado, descricao, data, animal);
+        anuncioService.cadastrar(titulo, user_id, cidade, endereco, descricao, telefone, foto, animal, email);
 
     }
 }
