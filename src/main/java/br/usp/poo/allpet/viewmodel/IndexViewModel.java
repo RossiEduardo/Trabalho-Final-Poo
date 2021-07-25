@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import br.usp.poo.allpet.model.Usuario;
+import br.usp.poo.allpet.model.Anuncio;
 
 public class IndexViewModel extends ViewModel {
 
 	private Map<String, Object> params = new HashMap<>();
 		
-	public IndexViewModel(List<Usuario> usuarios) {
-		params.put("usuarios", usuarios);
+	public IndexViewModel(List<Anuncio> anuncios) {
+		params.put("anuncios", anuncios);
 	}
 	
 	
