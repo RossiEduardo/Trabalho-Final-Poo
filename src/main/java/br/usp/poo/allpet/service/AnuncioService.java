@@ -5,6 +5,7 @@ import br.usp.poo.allpet.model.Anuncio;
 import br.usp.poo.allpet.model.Usuario;
 import br.usp.poo.allpet.repository.AnuncioRepository;
 import br.usp.poo.allpet.repository.UsuarioRepository;
+import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
 import br.usp.poo.allpet.viewmodel.BuscaViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,8 @@ public class AnuncioService {
     @Autowired
     private AnuncioRepository anuncioRepository;
 
-    public Anuncio getAnuncio(int id) {
-        return anuncioRepository.getById(id);
+    public AnuncioViewModel getAnuncio(int id) {
+        return new AnuncioViewModel(anuncioRepository.getById(id));
     }
 
     public void cadastrar(String titulo, short user_id, String cidade,

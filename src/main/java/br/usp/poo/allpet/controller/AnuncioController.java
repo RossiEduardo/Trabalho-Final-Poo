@@ -3,6 +3,7 @@ package br.usp.poo.allpet.controller;
 import br.usp.poo.allpet.enums.Animal;
 import br.usp.poo.allpet.model.Anuncio;
 import br.usp.poo.allpet.service.AnuncioService;
+import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
 import br.usp.poo.allpet.viewmodel.BuscaViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +21,9 @@ public class AnuncioController {
     private AnuncioService anuncioService;
 
     @GetMapping("/{id}")
-    public String getAnuncio(@PathVariable(value="id") short id) {
-        Anuncio anuncio = anuncioService.getAnuncio(id);
-        return anuncio.getTitulo();
+    public ModelAndView getAnuncio(@PathVariable(value="id") short id) {
+        AnuncioViewModel avm = anuncioService.getAnuncio(id);
+        return new ModelAndView("anuncio", avm.getParams());
     }
 
     @PostMapping("/criar")
