@@ -22,11 +22,16 @@ public class AnuncioController {
     @GetMapping("/{id}")
     public ModelAndView getAnuncio(@PathVariable(value="id") short id) {
         AnuncioViewModel avm = anuncioService.getAnuncio(id);
-        return new ModelAndView("anuncio", avm.getParams());
+        return new ModelAndView("anuncio/anuncio", avm.getParams());
+    }
+
+    @GetMapping("/criar")
+    public ModelAndView criar() {
+        return new ModelAndView("anuncio/criar");
     }
 
     @PostMapping("/criar")
-    public void cadastrar(@RequestParam String titulo,
+    public void criar(@RequestParam String titulo,
                           @RequestParam short user_id,
                           @RequestParam String cidade,
                           @RequestParam String endereco,
@@ -44,7 +49,7 @@ public class AnuncioController {
     public ModelAndView busca(@RequestParam(required=false) String regiao, @RequestParam(required=false) Animal animal) {
 
         AnuncioViewModel avm = anuncioService.buscar(regiao, animal);
-        return new ModelAndView("busca", avm.getParams());
+        return new ModelAndView("anuncio/busca", avm.getParams());
     }
 
 }
