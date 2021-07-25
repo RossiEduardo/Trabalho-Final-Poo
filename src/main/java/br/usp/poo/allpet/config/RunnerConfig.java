@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import br.usp.poo.allpet.enums.Animal;
 import br.usp.poo.allpet.model.Anuncio;
 import br.usp.poo.allpet.model.Usuario;
 import br.usp.poo.allpet.repository.AnuncioRepository;
@@ -46,6 +47,8 @@ public class RunnerConfig {
 					"São Carlos",
 					"164565161",
 					"lucasf.almeida@usp.br",
+					Animal.CACHORRO,
+					null,
 					usuario1
 				);
 			

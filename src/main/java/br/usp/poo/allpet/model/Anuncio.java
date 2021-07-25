@@ -6,8 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
+import br.usp.poo.allpet.enums.Animal;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,6 +42,12 @@ public class Anuncio {
 	@Column(length = 64, nullable = false)
 	private String email;
 
+	@Column(nullable = false)
+	private Animal animal;
+	
+	@Lob
+	private byte[] foto;
+	
 	@ManyToOne
 	@JoinColumn(nullable = false, name = "usuario_id")
 	private Usuario usuario;
