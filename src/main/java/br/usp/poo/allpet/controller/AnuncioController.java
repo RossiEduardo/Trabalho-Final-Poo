@@ -6,6 +6,8 @@ import br.usp.poo.allpet.service.AnuncioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/anuncio")
 public class AnuncioController {
@@ -14,11 +16,12 @@ public class AnuncioController {
     private AnuncioService anuncioService;
 
     @GetMapping("/{id}")
-    public Anuncio getAnuncio(@PathVariable(value="id") short id) {
-        return anuncioService.getAnuncio(id);
+    public String getAnuncio(@PathVariable(value="id") short id) {
+        Anuncio anuncio = anuncioService.getAnuncio(id);
+        return anuncio.getTitulo();
     }
 
-    @PostMapping("/cadastrar")
+    @PostMapping("/criar")
     public void cadastrar(@RequestParam String titulo,
                           @RequestParam short user_id,
                           @RequestParam String cidade,
@@ -32,4 +35,10 @@ public class AnuncioController {
         anuncioService.cadastrar(titulo, user_id, cidade, endereco, descricao, telefone, foto, animal, email);
 
     }
+
+    @GetMapping("/busca")
+    public void busca(@RequestParam String regiao, @RequestParam Animal animal) {
+        List<Anuncio> anuncios = anuncioService.buscar(regiao, animal);
+    }
+
 }

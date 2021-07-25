@@ -8,6 +8,8 @@ import br.usp.poo.allpet.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AnuncioService {
 
@@ -24,6 +26,15 @@ public class AnuncioService {
 
         Anuncio newAnuncio = new Anuncio(null, titulo, descricao, endereco, cidade, telefone, email, animal, foto, user_id);
         anuncioRepository.save(newAnuncio);
+    }
+
+    public List<Anuncio> buscar(String cidade, Animal animal) {
+        if (cidade != null && animal != null)
+            return anuncioRepository.getByCidadeAnimal(cidade, animal);
+        if (animal == null)
+            return anuncioRepository.getByCidade(cidade);
+
+        return anuncioRepository.getByAnimal(animal);
     }
 
 }
