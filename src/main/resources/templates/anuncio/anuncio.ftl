@@ -20,7 +20,7 @@
             <p>Cidade: ${anuncio.cidade}</p>
             <p>Telefone: ${anuncio.telefone}</p>
             <p>E-mail: ${anuncio.email}</p>
-            <p>Animal (0 cachorro; 1 gato): ${anuncio.animal}</p>
+            <img src="/img/${anuncio.animal?lower_case}.png" alt="Foto de um ${anuncio.animal?lower_case}." />
             <p>ID do usuário: ${anuncio.usuario}</p>
         <#else>
             <h2>Não encontrado</h2>

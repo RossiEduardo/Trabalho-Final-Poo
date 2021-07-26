@@ -9,10 +9,6 @@
         <#include "/components/user-space.ftl"/>
 
         <#if sucesso?? && retorno??>
-            <p class="${sucesso?then('mensagem-sucesso','mensagem-erro')}">${retorno}</p>
-        </#if>
-
-        <#if sucesso?? && retorno??>
             <#if sucesso>
                 <p class="mensagem-sucesso">${retorno}</p>
                 <a href="/anuncio/${anuncioId}"></a>
