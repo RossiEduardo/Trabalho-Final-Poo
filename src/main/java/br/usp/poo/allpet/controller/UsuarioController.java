@@ -54,10 +54,8 @@ public class UsuarioController {
         String email = AuthUser.getEmail();
         if (email != null)
             return new ModelAndView("redirect:/");
-        HashMap<String, Object> params = new HashMap<>();
-        params.put("error", error!=null);
-        params.put("logout", logout!=null);
-        return new ModelAndView("usuario/login", params);
+        UsuarioViewModel uvm = usuarioService.loginPage(error, logout);
+        return new ModelAndView("usuario/login", uvm.getParams());
     }
     
     

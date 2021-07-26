@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+
 @Service
 public class UsuarioService {
 
@@ -36,13 +38,8 @@ public class UsuarioService {
         return usuarioRepository.getById((id));
     }
 
-    public String login(String email, String password) {
-        Usuario user = usuarioRepository.findByEmail(email);
-        if (user == null)
-            return "Usuário não existe!";
-        if (!user.getSenha().equals(password))
-            return "Senha inválida!";
-        return "Login feito com sucesso!";
+    public UsuarioViewModel loginPage(String error, String logout) {
+        return new UsuarioViewModel(error, logout);
     }
     
     public UsuarioViewModel getAnuncioByUsuario (Usuario usuario) {

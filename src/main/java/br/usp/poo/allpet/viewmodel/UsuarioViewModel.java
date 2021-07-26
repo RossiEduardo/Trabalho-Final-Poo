@@ -14,7 +14,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 public class UsuarioViewModel extends ViewModel{
 
 	private Map<String, Object> params = new HashMap<>();
-		
+
+	public UsuarioViewModel(String error, String logout) {
+		params.put("error", error!=null);
+		params.put("logout", logout!=null);
+	}
+
 	public UsuarioViewModel(Usuario usuario) {
 		params.put("usuario", usuario);
 	}
