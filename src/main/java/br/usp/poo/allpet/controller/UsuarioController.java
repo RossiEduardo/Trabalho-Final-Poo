@@ -33,9 +33,4 @@ public class UsuarioController {
         return new ModelAndView("usuario/login");
     }
 
-    @PostMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String senha) {
-        return usuarioService.login(email, senha);
-    }
-
 }
