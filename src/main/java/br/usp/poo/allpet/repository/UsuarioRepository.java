@@ -8,7 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Short> {
-
+	
+	//filtra os usuário por email
     @Query("SELECT u FROM Usuario u WHERE u.email= :email")
     Usuario findByEmail(@Param("email") String email);
 

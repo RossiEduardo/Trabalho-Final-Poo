@@ -14,7 +14,8 @@ public class IndexController {
 	
 	@Autowired
 	private IndexService indexService;
-
+	
+	//Página incial
 	@GetMapping
 	public ModelAndView getIndex() {
 		IndexViewModel vm = indexService.getIndexViewModel();

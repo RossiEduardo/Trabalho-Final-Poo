@@ -20,7 +20,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Usuario implements UserDetails {
-	
+	//entidade referente às tabelas do banco de dados
+	//com as informaçãoes de cada coluna
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Short id;
@@ -47,7 +48,7 @@ public class Usuario implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return null;
 	}
-
+	
 	@Override
 	public String getPassword() {
 		return this.senha;

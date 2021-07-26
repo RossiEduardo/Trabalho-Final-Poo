@@ -19,7 +19,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Anuncio {
-	
+	//entidade referente às tabelas do banco de dados
+	//com as informaçãoes de cada coluna
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
