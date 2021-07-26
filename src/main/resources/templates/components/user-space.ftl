@@ -6,6 +6,11 @@
         <div class="user-space-anuncio-criar">Quero doar um Pet!</div>
     </a>
     <a href="/logout" class="user-space-logout-link">
-        <div class="user-space-logout">Logout &rarr;</div>
+        <#if username??>
+            <p>${username}</p>
+            <div class="user-space-logout">Logout &rarr;</div>
+        <#else>
+            <a href="/login">Login</a>
+        </#if>
     </a>
 </article>
