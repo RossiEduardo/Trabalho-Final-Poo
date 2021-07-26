@@ -8,11 +8,8 @@
         <#include "/components/header.ftl"/>
         <#include "/components/user-space.ftl"/>
 
-        <#if error>
-            <p class="mensagem-erro">Credenciais inválidas!</p>
-        </#if>
-        <#if logout>
-            <p class="logout">Logout feito com sucesso!</p>
+        <#if sucesso?? && retorno??>
+            <p class="${sucesso?then('mensagem-sucesso','mensagem-erro')}">${retorno}</p>
         </#if>
 
         <form action="login" method="post">

@@ -8,12 +8,8 @@
         <#include "/components/header.ftl"/>
         <#include "/components/user-space.ftl"/>
 
-        <#if sucesso??>
-            <#if sucesso>
-                <p class="mensagem-sucesso">Usuário cadastrado com sucesso</p>
-            <#else>
-                <p class="mensagem-erro">Ocorreu um erro no cadastro</p>
-            </#if>
+        <#if sucesso?? && retorno??>
+            <p class="${sucesso?then('mensagem-sucesso','mensagem-erro')}">${retorno}</p>
         </#if>
         
         <form action="cadastro" method="post">

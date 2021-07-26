@@ -10,12 +10,8 @@
 
         <p>${usuario.nome}<p>
 
-        <#if sucesso??>
-            <#if sucesso>
-                <p class="mensagem-sucesso">Usuário atualizado com sucesso</p>
-            <#else>
-                <p class="mensagem-erro">Ocorreu um erro na atualização do usuário</p>
-            </#if>
+        <#if sucesso?? && retorno??>
+            <p class="${sucesso?then('mensagem-sucesso','mensagem-erro')}">${retorno}</p>
         </#if>
 
         <#list anuncios as anuncio>
