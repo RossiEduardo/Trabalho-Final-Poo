@@ -27,6 +27,7 @@ public class UsuarioController {
                 cidade, telefone
         );
     }
+    
     @PostMapping("/login")
     public String login(@RequestParam String email, @RequestParam String senha) {
         return usuarioService.login(email, senha);
