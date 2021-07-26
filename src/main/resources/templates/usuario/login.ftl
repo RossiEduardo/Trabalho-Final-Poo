@@ -7,12 +7,14 @@
     <body>
         <#include "/components/header.ftl"/>
         <#include "/components/user-space.ftl"/>
+
         <#if error>
-            <p class="error">Credenciais inválidas!</p>
+            <p class="mensagem-erro">Credenciais inválidas!</p>
         </#if>
         <#if logout>
             <p class="logout">Logout feito com sucesso!</p>
         </#if>
+
         <form action="login" method="post">
             E-mail: <input type="email" name="username" />
             Senha: <input type="password" name="password" />
