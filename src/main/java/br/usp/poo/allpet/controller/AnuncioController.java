@@ -41,11 +41,10 @@ public class AnuncioController {
                           @RequestParam String endereco,
                           @RequestParam String descricao,
                           @RequestParam String telefone,
-                          @RequestParam byte[] foto,
                           @RequestParam String email,
                           @RequestParam Animal animal) {
 
-        anuncioService.cadastrar(titulo, user_id, cidade, endereco, descricao, telefone, foto, animal, email);
+        anuncioService.cadastrar(titulo, user_id, cidade, endereco, descricao, telefone, animal, email);
 
     }
     

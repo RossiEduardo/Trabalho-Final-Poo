@@ -29,9 +29,9 @@ public class AnuncioService {
     //Cadastrar um anúncio
     public void cadastrar(String titulo, short user_id, String cidade,
                           String endereco, String descricao, String telefone,
-                          byte[] foto, Animal animal, String email) {
+                          Animal animal, String email) {
 
-        Anuncio newAnuncio = new Anuncio(null, titulo, descricao, endereco, cidade, telefone, email, animal, foto, user_id);
+        Anuncio newAnuncio = new Anuncio(null, titulo, descricao, endereco, cidade, telefone, email, animal, user_id);
         anuncioRepository.save(newAnuncio);
     }
     
