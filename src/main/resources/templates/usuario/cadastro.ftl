@@ -15,6 +15,7 @@
                 <p class="mensagem-erro">Ocorreu um erro no cadastro</p>
             </#if>
         </#if>
+        
         <form action="cadastro" method="post">
             Nome: <input type="text" name="nome" />
             Cidade: <input type="text" name="cidade" />
