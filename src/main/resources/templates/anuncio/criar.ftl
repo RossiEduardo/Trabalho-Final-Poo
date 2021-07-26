@@ -8,8 +8,13 @@
         <#include "/components/header.ftl"/>
         <#include "/components/user-space.ftl"/>
 
-        <#if retorno??>
-            <p class="${sucesso?then('mensagem-sucesso','mensagem-erro')}">${retorno}</p>
+        <#if sucesso??>
+            <#if sucesso>
+                <p class="mensagem-sucesso">Anúncio criado com sucesso</p>
+                <a href="/anuncio/${anuncioId}"></a>
+            <#else>
+                <p class="mensagem-erro">Ocorreu um erro na criação do anúncio</p>
+            </#if>
         </#if>
         <form action="anuncio/criar" method="post">
             Título: <input type="text" name="titulo" />
@@ -20,8 +25,9 @@
             E-mail: <input type="email" name="email" />
             Animal:
             <select name="animal">
-                <option>1</option>
-                <option>2</option>
+                <#list animais as animal>
+                    <option>${animal?capitalize}</option>
+                </#list>
             </select>
             <input type="submit" />
         </form>
