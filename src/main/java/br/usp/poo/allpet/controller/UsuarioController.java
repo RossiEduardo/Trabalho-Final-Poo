@@ -2,11 +2,15 @@ package br.usp.poo.allpet.controller;
 
 import br.usp.poo.allpet.model.Usuario;
 import br.usp.poo.allpet.repository.UsuarioRepository;
+import br.usp.poo.allpet.security.AuthUser;
 import br.usp.poo.allpet.service.AnuncioService;
 import br.usp.poo.allpet.service.UsuarioService;
 import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,6 +24,9 @@ public class UsuarioController {
     
     @Autowired
     private AnuncioService anuncioService;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     @GetMapping("/cadastro")
     public ModelAndView getCadastro() {
@@ -46,10 +53,12 @@ public class UsuarioController {
     
     
     @GetMapping("/perfil")
-    public ModelAndView perfil(@RequestParam Short idUsuario) {
+    public ModelAndView perfil() {
 
-    	AnuncioViewModel avm = anuncioService.getAnuncioByUsuario(idUsuario);
-    	
+        String email = AuthUser.getEmail();
+        Usuario user = usuarioRepository.findByEmail(email);
+    	AnuncioViewModel avm = anuncioService.getAnuncioByUsuario(user);
+
     	return new ModelAndView("usuario/perfil", avm.getParams());
     }
 
