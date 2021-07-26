@@ -69,11 +69,4 @@ public class UsuarioController {
     	return new ModelAndView("usuario/perfil", uvm.getParams());
     }
 
-    @PostMapping("/perfil")
-    public ModelAndView excluirAnuncio(@RequestParam String idAnuncio){
-    	usuarioService.deleteAnuncio(idAnuncio);
-    	return perfil();
-    }
-
-
 }

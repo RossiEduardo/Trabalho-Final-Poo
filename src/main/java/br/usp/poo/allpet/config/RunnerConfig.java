@@ -62,7 +62,7 @@ public class RunnerConfig {
 					"lucasf.almeida@usp.br",
 					Animal.GATO,
 					null,
-					(short) 1
+					(short) 2
 			);
 			
 			anuncioRepository.saveAll(List.of(anuncio, anuncio2));

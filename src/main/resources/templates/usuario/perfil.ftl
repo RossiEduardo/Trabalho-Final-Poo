@@ -13,8 +13,8 @@
 <#if retorno??>
             <p class="${sucesso?then('mensagem-sucesso','mensagem-erro')}">${retorno}</p>
         </#if>
-        <form action="perfil" method="post">
-            DeletarAnuncio: <input type="text" name="idAnuncio" />
+        <form action="/anuncio/delete" method="post">
+            Deletar Anuncio: <input type="text" name="idAnuncio" />
             <input type="submit" />
         </form>
 
