@@ -2,7 +2,11 @@
 <html lang="pt-br">
 	<head>
 		<#include "/components/meta.ftl"/>
-	    <title>allPet</title>
+        <#if anuncio??>
+	        <title>allPet - Anúncio ${anuncio.id}</title>
+        <#else>
+            <title>allPet - Anúncio não encontrado</title>
+        </#if>
 	</head>
 	<body>
 		<#include "/components/header.ftl"/>

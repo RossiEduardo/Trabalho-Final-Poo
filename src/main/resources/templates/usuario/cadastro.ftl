@@ -2,7 +2,7 @@
 <html lang="pt-br">
     <head>
         <#include "/components/meta.ftl"/>
-        <title>allPet</title>
+        <title>allPet - Cadastro</title>
     </head>
     <body>
         <#include "/components/header.ftl"/>

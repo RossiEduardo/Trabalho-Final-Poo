@@ -2,7 +2,7 @@
 <html lang="pt-br">
     <head>
         <#include "/components/meta.ftl"/>
-        <title>allPet</title>
+        <title>allPet - Criar anúncio</title>
     </head>
     <body>
         <#include "/components/header.ftl"/>
