@@ -6,6 +6,7 @@ import br.usp.poo.allpet.security.AuthUser;
 import br.usp.poo.allpet.service.AnuncioService;
 import br.usp.poo.allpet.service.UsuarioService;
 import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
+import br.usp.poo.allpet.viewmodel.UsuarioViewModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -57,9 +58,15 @@ public class UsuarioController {
 
         String email = AuthUser.getEmail();
         Usuario user = usuarioRepository.findByEmail(email);
-    	AnuncioViewModel avm = anuncioService.getAnuncioByUsuario(user);
+    	UsuarioViewModel uvm = usuarioService.getAnuncioByUsuario(user);
 
-    	return new ModelAndView("usuario/perfil", avm.getParams());
+    	return new ModelAndView("usuario/perfil", uvm.getParams());
+    }
+    
+    @PostMapping("/perfil")
+    public ModelAndView excluirAnuncio(@RequestParam String idAnuncio){
+    	usuarioService.deleteAnuncio(idAnuncio);
+    	return perfil();
     }
 
 

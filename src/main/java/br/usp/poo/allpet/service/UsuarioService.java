@@ -1,7 +1,10 @@
 package br.usp.poo.allpet.service;
 
 import br.usp.poo.allpet.model.Usuario;
+import br.usp.poo.allpet.repository.AnuncioRepository;
 import br.usp.poo.allpet.repository.UsuarioRepository;
+import br.usp.poo.allpet.viewmodel.UsuarioViewModel;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -11,6 +14,9 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private AnuncioRepository anuncioRepository;
 
     public boolean checkUserInDb(String email) {
         Usuario user = usuarioRepository.findByEmail(email);
@@ -37,6 +43,23 @@ public class UsuarioService {
         if (!user.getSenha().equals(password))
             return "Senha inválida!";
         return "Login feito com sucesso!";
+    }
+    
+    public UsuarioViewModel getAnuncioByUsuario (Usuario usuario) {
+
+    	return new UsuarioViewModel(usuario, anuncioRepository.getByUsuario(usuario.getId()));
+    	
+    }
+    
+    public String deleteAnuncio (String idAnuncio) {
+    	Integer id = Integer.parseInt(idAnuncio);
+    	
+    	//anuncioRepository.findById(id);
+    	
+    	anuncioRepository.deleteById(id);
+    	
+    	return "done";
+    	
     }
 
 }
