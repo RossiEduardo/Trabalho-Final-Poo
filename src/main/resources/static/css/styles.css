@@ -40,6 +40,12 @@ main {
     width: 600px;
     max-width: 100%;
     background: white;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-radius: 10px;
+}
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
 }
