@@ -42,26 +42,29 @@ public class UsuarioController {
     
     //Adicionando um novo usuário no Banco de Dados
     @PostMapping("/cadastro")
-    public String addUser(@RequestParam String email, @RequestParam String nome, @RequestParam String senha, @RequestParam String cpf,
+    public ModelAndView addUser(@RequestParam String email, @RequestParam String nome, @RequestParam String senha, @RequestParam String cpf,
                           @RequestParam String cidade, @RequestParam String telefone) {
 
-        return usuarioService.addUser(
+         Boolean r = usuarioService.addUser(
                 nome, email,
                 senha, cpf,
                 cidade, telefone
         );
+         if (r)
+             return new ModelAndView("redirect:/login?sucesso=true&retorno=Usuario+cadastrado+com+sucesso!");
+        return new ModelAndView("redirect:/login?sucesso=false&retorno=Usuario+ja+existe!");
     }
 
     //Página de login
     @GetMapping("/login")
-    public ModelAndView login(@RequestParam(required=false) String error, @RequestParam(required=false) String logout) {
+    public ModelAndView login(@RequestParam(required=false) Boolean sucesso, @RequestParam(required = false) String retorno) {
     	//verifica se o usário já está logado
         String email = AuthUser.getEmail();
         if (email != null)
             return new ModelAndView("redirect:/"); //Usuário logado, redireciona para a página incial
         
         //caso o usuário não esteja logado
-        UsuarioViewModel uvm = usuarioService.loginPage(error, logout);
+        UsuarioViewModel uvm = usuarioService.loginPage(sucesso, retorno);
         //avisa o front end se houve um erro ou logout
         return new ModelAndView("usuario/login", uvm.getParams());
     }
