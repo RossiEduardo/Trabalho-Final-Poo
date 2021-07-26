@@ -39,10 +39,9 @@ public class AnuncioService {
         return new AnuncioViewModel(anuncioRepository.getByAnimal(animal));
     }
     
-    public AnuncioViewModel getAnuncioByUsuario (Short idUsuario) {
-    	
-    	
-    	return new AnuncioViewModel(anuncioRepository.getByUsuario(idUsuario));
+    public AnuncioViewModel getAnuncioByUsuario (Usuario usuario) {
+
+    	return new AnuncioViewModel(anuncioRepository.getByUsuario(usuario.getId()));
     	
     }
 

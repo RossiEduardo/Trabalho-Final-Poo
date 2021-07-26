@@ -1,6 +1,7 @@
 package br.usp.poo.allpet.viewmodel;
 
 import br.usp.poo.allpet.model.Anuncio;
+import br.usp.poo.allpet.security.AuthUser;
 import br.usp.poo.allpet.security.ImplementsUserDetailsService;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,11 +23,8 @@ public class AnuncioViewModel {
     }
 
     public Map<String, Object> getParams() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            String currentUserName = authentication.getName();
-            params.put("username", currentUserName);
-        }
+        String authEmail = AuthUser.getEmail();
+        params.put("username", authEmail);
         return params;
     }
 }
