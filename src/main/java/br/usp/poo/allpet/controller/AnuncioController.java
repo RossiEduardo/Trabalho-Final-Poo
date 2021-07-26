@@ -15,21 +15,25 @@ import java.util.Map;
 @RestController
 @RequestMapping("/anuncio")
 public class AnuncioController {
-
+	
     @Autowired
     private AnuncioService anuncioService;
 
+    //Criando uma página referente ao anúncio de {id}
     @GetMapping("/{id}")
     public ModelAndView getAnuncio(@PathVariable(value="id") short id) {
         AnuncioViewModel avm = anuncioService.getAnuncio(id);
+        //retona um ModealAndView com um anúncio
         return new ModelAndView("anuncio/anuncio", avm.getParams());
     }
-
+    
+    //Página para criação de um anúncio
     @GetMapping("/criar")
     public ModelAndView criar() {
         return new ModelAndView("anuncio/criar");
     }
-
+    
+    //Recebe os dados do anúncio e adiciona no banco de dados
     @PostMapping("/criar")
     public void criar(@RequestParam String titulo,
                           @RequestParam short user_id,
@@ -44,7 +48,8 @@ public class AnuncioController {
         anuncioService.cadastrar(titulo, user_id, cidade, endereco, descricao, telefone, foto, animal, email);
 
     }
-
+    
+    //Procura os anúncios que estão de acordo com uma região e animal
     @GetMapping("/busca")
     public ModelAndView busca(@RequestParam(required=false) String regiao, @RequestParam(required=false) Animal animal) {
 
@@ -52,12 +57,13 @@ public class AnuncioController {
         return new ModelAndView("anuncio/busca", avm.getParams());
     }
     
+    //Deleta um anúncio, dado o id, do banco de dados
     @PostMapping("/delete")
     public ModelAndView excluirAnuncio(@RequestParam String idAnuncio){
     	String str = anuncioService.deleteAnuncio(idAnuncio);
     	
-    	
-    	
+    	//após o delete redireciona para a página do perfil do usuário logado no site
+    	//adiona na url o retorno da busca, done ou error
     	return new ModelAndView("redirect:/perfil?" + str);
     }
 

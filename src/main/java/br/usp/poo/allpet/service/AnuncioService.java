@@ -25,7 +25,8 @@ public class AnuncioService {
     public AnuncioViewModel getAnuncio(int id) {
         return new AnuncioViewModel(anuncioRepository.getById(id));
     }
-
+    
+    //Cadastrar um anúncio
     public void cadastrar(String titulo, short user_id, String cidade,
                           String endereco, String descricao, String telefone,
                           byte[] foto, Animal animal, String email) {
@@ -33,7 +34,8 @@ public class AnuncioService {
         Anuncio newAnuncio = new Anuncio(null, titulo, descricao, endereco, cidade, telefone, email, animal, foto, user_id);
         anuncioRepository.save(newAnuncio);
     }
-
+    
+    //Busca os anúncios dado uma cidade e um animal
     public AnuncioViewModel buscar(String cidade, Animal animal) {
         if (cidade != null && animal != null)
             return new AnuncioViewModel(anuncioRepository.getByCidadeAnimal(cidade, animal));
@@ -43,12 +45,14 @@ public class AnuncioService {
         return new AnuncioViewModel(anuncioRepository.getByAnimal(animal));
     }
     
+    //Deleta um anúncio pelo id
     public String deleteAnuncio (String idAnuncio) {
     	Integer id = Integer.parseInt(idAnuncio);
     	
     	Anuncio anuncio = anuncioRepository.getById(id);
     	Usuario user = usuarioRepository.getById( anuncio.getUsuario() );
     	
+    	//verifica se o anúncio pertence ao usuário logado
     	if ( (user.getEmail()).equals( AuthUser.getEmail() ) ) {
         	anuncioRepository.deleteById(id);
         	return "done";

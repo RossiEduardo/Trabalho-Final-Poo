@@ -24,7 +24,8 @@ public class UsuarioService {
         Usuario user = usuarioRepository.findByEmail(email);
         return user!=null;
     }
-
+    
+    //Adiciona um novo usuário no banco de dados
     public String addUser(String nome, String email, String senha, String cpf, String cidade, String telefone) {
         boolean isInDb = checkUserInDb(email);
         if (isInDb)
@@ -42,7 +43,7 @@ public class UsuarioService {
         return new UsuarioViewModel(error, logout);
     }
     
-    public UsuarioViewModel getAnuncioByUsuario (Usuario usuario) {
+    public UsuarioViewModel getInfosUsuario (Usuario usuario) {
 
     	return new UsuarioViewModel(usuario, anuncioRepository.getByUsuario(usuario.getId()));
     	

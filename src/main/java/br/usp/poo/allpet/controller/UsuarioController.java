@@ -29,15 +29,18 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-
+    
+    //Página de cadastro do usuário
     @GetMapping("/cadastro")
     public ModelAndView getCadastro() {
+    	//verificando se o usuário já está logado
         String email = AuthUser.getEmail();
         if (email != null)
-            return new ModelAndView("redirect:/");
+            return new ModelAndView("redirect:/"); //Usuário logado, redireciona para a página incial
         return new ModelAndView("usuario/cadastro");
     }
-
+    
+    //Adicionando um novo usuário no Banco de Dados
     @PostMapping("/cadastro")
     public String addUser(@RequestParam String email, @RequestParam String nome, @RequestParam String senha, @RequestParam String cpf,
                           @RequestParam String cidade, @RequestParam String telefone) {
@@ -49,23 +52,29 @@ public class UsuarioController {
         );
     }
 
+    //Página de login
     @GetMapping("/login")
     public ModelAndView login(@RequestParam(required=false) String error, @RequestParam(required=false) String logout) {
+    	//verifica se o usário já está logado
         String email = AuthUser.getEmail();
         if (email != null)
-            return new ModelAndView("redirect:/");
+            return new ModelAndView("redirect:/"); //Usuário logado, redireciona para a página incial
+        
+        //caso o usuário não esteja logado
         UsuarioViewModel uvm = usuarioService.loginPage(error, logout);
+        //avisa o front end se houve um erro ou logout
         return new ModelAndView("usuario/login", uvm.getParams());
     }
     
     
+    //Página de perfil
     @GetMapping("/perfil")
     public ModelAndView perfil() {
-
+    	//Encontra o usúario pelo email e mostra todos os seus anúncios
         String email = AuthUser.getEmail();
         Usuario user = usuarioRepository.findByEmail(email);
-    	UsuarioViewModel uvm = usuarioService.getAnuncioByUsuario(user);
-
+    	UsuarioViewModel uvm = usuarioService.getInfosUsuario(user);
+    	
     	return new ModelAndView("usuario/perfil", uvm.getParams());
     }
 

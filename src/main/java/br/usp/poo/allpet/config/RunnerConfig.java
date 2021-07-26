@@ -16,6 +16,8 @@ import br.usp.poo.allpet.repository.UsuarioRepository;
 public class RunnerConfig {
 	
 	// Esta classe serve para iniciar as tabelas quando o programa é executado
+	
+	//Criando usuários
 	@Bean
 	CommandLineRunner commandLineRunner(UsuarioRepository usuarioRepository, AnuncioRepository anuncioRepository) {
 		return args -> {
@@ -37,8 +39,9 @@ public class RunnerConfig {
 					"adrio.oliveira@usp.br",
 					"$2a$10$/tvGxvYQ19l0eRppVwFjzuARNLpKOl4vmxTGvzKkIU5fftpyooGna"
 				);
-			usuarioRepository.saveAll(List.of(usuario1, usuario2));
+			usuarioRepository.saveAll(List.of(usuario1, usuario2)); //Salvando no Banco de Dados
 			
+			//Criando anúncios 
 			Anuncio anuncio = new Anuncio(
 					null,
 					"Cachorro vira-lata caramelo",
@@ -65,7 +68,7 @@ public class RunnerConfig {
 					(short) 2
 			);
 			
-			anuncioRepository.saveAll(List.of(anuncio, anuncio2));
+			anuncioRepository.saveAll(List.of(anuncio, anuncio2)); //Salvando no Banco de Dados
 		};
 	}
 	
