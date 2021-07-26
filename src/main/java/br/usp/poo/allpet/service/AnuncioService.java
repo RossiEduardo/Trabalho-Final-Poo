@@ -25,6 +25,10 @@ public class AnuncioService {
     public AnuncioViewModel getAnuncio(int id) {
         return new AnuncioViewModel(anuncioRepository.getById(id));
     }
+
+    public AnuncioViewModel getCriar(String userEmail) {
+        return new AnuncioViewModel();
+    }
     
     //Cadastrar um anúncio
     public void cadastrar(String titulo, String user_email, String cidade,

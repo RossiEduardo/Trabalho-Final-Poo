@@ -14,6 +14,10 @@ import java.util.Map;
 public class AnuncioViewModel {
     private Map<String, Object> params = new HashMap<>();
 
+    public AnuncioViewModel() {
+        params.put("animais", List.of("gato", "cachorro"));
+    }
+
     public AnuncioViewModel(Anuncio anuncio) {
         params.put("anuncio", anuncio);
     }
@@ -25,7 +29,7 @@ public class AnuncioViewModel {
     //adiciona o email na hashMap e retorna todos os parâmetros
     public Map<String, Object> getParams() {
         String authEmail = AuthUser.getEmail();
-        params.put("usuario", authEmail);
+        params.put("username", authEmail);
         return params;
     }
 }

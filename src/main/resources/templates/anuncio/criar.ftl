@@ -19,7 +19,7 @@
                     </#if>
                 </#if>
                 
-                <form action="anuncio/criar" method="post">
+                <form action="/anuncio/criar" method="post">
                     Título: <input type="text" name="titulo" />
                     Descrição: <textarea name="descricao"></textarea>
                     Endereço: <input type="text" name="endereco" />
@@ -29,7 +29,7 @@
                     Animal:
                     <select name="animal">
                         <#list animais as animal>
-                            <option>${animal?capitalize}</option>
+                            <option>${animal?upper_case}</option>
                         </#list>
                     </select>
                     <input type="submit" />
