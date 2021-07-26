@@ -50,16 +50,5 @@ public class UsuarioService {
     	return new UsuarioViewModel(usuario, anuncioRepository.getByUsuario(usuario.getId()));
     	
     }
-    
-    public String deleteAnuncio (String idAnuncio) {
-    	Integer id = Integer.parseInt(idAnuncio);
-    	
-    	//anuncioRepository.findById(id);
-    	
-    	anuncioRepository.deleteById(id);
-    	
-    	return "done";
-    	
-    }
 
 }

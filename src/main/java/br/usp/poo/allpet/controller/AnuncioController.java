@@ -51,5 +51,14 @@ public class AnuncioController {
         AnuncioViewModel avm = anuncioService.buscar(regiao, animal);
         return new ModelAndView("anuncio/busca", avm.getParams());
     }
+    
+    @PostMapping("/delete")
+    public ModelAndView excluirAnuncio(@RequestParam String idAnuncio){
+    	String str = anuncioService.deleteAnuncio(idAnuncio);
+    	
+    	
+    	
+    	return new ModelAndView("redirect:/perfil?" + str);
+    }
 
 }

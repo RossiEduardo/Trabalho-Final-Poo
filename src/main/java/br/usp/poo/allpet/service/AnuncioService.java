@@ -5,6 +5,7 @@ import br.usp.poo.allpet.model.Anuncio;
 import br.usp.poo.allpet.model.Usuario;
 import br.usp.poo.allpet.repository.AnuncioRepository;
 import br.usp.poo.allpet.repository.UsuarioRepository;
+import br.usp.poo.allpet.security.AuthUser;
 import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -17,6 +18,9 @@ public class AnuncioService {
 
     @Autowired
     private AnuncioRepository anuncioRepository;
+    
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     public AnuncioViewModel getAnuncio(int id) {
         return new AnuncioViewModel(anuncioRepository.getById(id));
@@ -39,5 +43,18 @@ public class AnuncioService {
         return new AnuncioViewModel(anuncioRepository.getByAnimal(animal));
     }
     
+    public String deleteAnuncio (String idAnuncio) {
+    	Integer id = Integer.parseInt(idAnuncio);
+    	
+    	Anuncio anuncio = anuncioRepository.getById(id);
+    	Usuario user = usuarioRepository.getById( anuncio.getUsuario() );
+    	
+    	if ( (user.getEmail()).equals( AuthUser.getEmail() ) ) {
+        	anuncioRepository.deleteById(id);
+        	return "done";
+    	}
+
+    	return "error";
+    }
 
 }
