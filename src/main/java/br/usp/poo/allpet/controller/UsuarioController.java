@@ -14,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.HashMap;
 
@@ -31,12 +32,16 @@ public class UsuarioController {
 
     @GetMapping("/cadastro")
     public ModelAndView getCadastro() {
+        String email = AuthUser.getEmail();
+        if (email != null)
+            return new ModelAndView("redirect:/");
         return new ModelAndView("usuario/cadastro");
     }
 
     @PostMapping("/cadastro")
     public String addUser(@RequestParam String email, @RequestParam String nome, @RequestParam String senha, @RequestParam String cpf,
                           @RequestParam String cidade, @RequestParam String telefone) {
+
         return usuarioService.addUser(
                 nome, email,
                 senha, cpf,
@@ -46,10 +51,11 @@ public class UsuarioController {
 
     @GetMapping("/login")
     public ModelAndView login(@RequestParam(required=false) String error, @RequestParam(required=false) String logout) {
-        HashMap<String, Object> params = new HashMap<>();
-        params.put("error", error!=null);
-        params.put("logout", logout!=null);
-        return new ModelAndView("usuario/login", params);
+        String email = AuthUser.getEmail();
+        if (email != null)
+            return new ModelAndView("redirect:/");
+        UsuarioViewModel uvm = usuarioService.loginPage(error, logout);
+        return new ModelAndView("usuario/login", uvm.getParams());
     }
     
     
