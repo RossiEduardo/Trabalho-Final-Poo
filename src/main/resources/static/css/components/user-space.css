@@ -19,25 +19,35 @@
     align-items: center;
 }
 
-#user-space .user-profile {
+#user-space .perfil {
     height: 40px;
     width: 40px;
     background: #ffe0b2;
 }
 
-#user-space .user-pet-register-link {
+#user-space .anuncio-criar-link {
     flex-grow: 1;
 }
 
-#user-space .user-pet-register {
+#user-space .anuncio-criar {
     margin-left: 0;
     margin-right: 0;
     width: 100%;
     height: 40px;
 }
 
-#user-space .user-logout {
+#user-space .logout {
     height: 40px;
     width: 150px;
     background: #ffe0e0;
+}
+
+#user-space .login-link {
+    display: flex;
+    width: 100%;
+}
+
+#user-space .login {
+    flex-grow: 1;
+    height: 40px;
 }
