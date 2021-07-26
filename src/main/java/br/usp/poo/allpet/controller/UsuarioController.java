@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
+
 @RestController
 public class UsuarioController {
 
@@ -35,8 +37,11 @@ public class UsuarioController {
     }
 
     @GetMapping("/login")
-    public ModelAndView login() {
-        return new ModelAndView("usuario/login");
+    public ModelAndView login(@RequestParam(required=false) String error, @RequestParam(required=false) String logout) {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("error", error!=null);
+        params.put("logout", logout!=null);
+        return new ModelAndView("usuario/login", params);
     }
     
     
@@ -47,5 +52,6 @@ public class UsuarioController {
     	
     	return new ModelAndView("usuario/perfil", avm.getParams());
     }
+
 
 }

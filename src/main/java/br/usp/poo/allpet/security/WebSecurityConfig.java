@@ -27,10 +27,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.GET, "/cadastro").permitAll()
 		.antMatchers(HttpMethod.POST, "/cadastro").permitAll()
 		.anyRequest().authenticated()
-		.and().formLogin().permitAll()
-		.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+		.and().formLogin().loginPage("/login").failureUrl("/login?error").permitAll()
+		.and().logout()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.logoutSuccessUrl("/login?logout").permitAll()
+				.deleteCookies();
 	}
-	
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 		auth.userDetailsService(userDetailsService)
