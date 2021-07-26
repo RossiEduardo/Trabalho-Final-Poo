@@ -15,7 +15,7 @@ public class UsuarioController {
 
     @GetMapping("/cadastro")
     public ModelAndView getCadastro() {
-        return new ModelAndView("index/cadastro");
+        return new ModelAndView("usuario/cadastro");
     }
 
     @PostMapping("/cadastro")
@@ -27,7 +27,12 @@ public class UsuarioController {
                 cidade, telefone
         );
     }
-    
+
+    @GetMapping("/login")
+    public ModelAndView login() {
+        return new ModelAndView("usuario/login");
+    }
+
     @PostMapping("/login")
     public String login(@RequestParam String email, @RequestParam String senha) {
         return usuarioService.login(email, senha);

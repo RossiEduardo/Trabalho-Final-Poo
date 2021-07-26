@@ -20,5 +20,4 @@ public interface AnuncioRepository extends JpaRepository<Anuncio, Integer> {
     @Query("SELECT a FROM Anuncio a WHERE a.animal= :animal")
     List<Anuncio> getByAnimal(@Param("animal") Animal animal);
 
-
 }
