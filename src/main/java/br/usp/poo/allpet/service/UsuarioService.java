@@ -26,21 +26,21 @@ public class UsuarioService {
     }
     
     //Adiciona um novo usuário no banco de dados
-    public String addUser(String nome, String email, String senha, String cpf, String cidade, String telefone) {
+    public Boolean addUser(String nome, String email, String senha, String cpf, String cidade, String telefone) {
         boolean isInDb = checkUserInDb(email);
         if (isInDb)
-            return "Usuário já cadastrado!";
+            return false;
         Usuario user = new Usuario(null,  nome, cidade, cpf, telefone, email, new BCryptPasswordEncoder().encode(senha));
         usuarioRepository.save(user);
-        return "Usuário cadastrado com sucesso!";
+        return true;
     }
 
     public Usuario getUserById(short id) {
         return usuarioRepository.getById((id));
     }
 
-    public UsuarioViewModel loginPage(String error, String logout) {
-        return new UsuarioViewModel(error, logout);
+    public UsuarioViewModel loginPage(Boolean success, String retorno) {
+        return new UsuarioViewModel(success, retorno);
     }
     
     public UsuarioViewModel getInfosUsuario (Usuario usuario) {

@@ -15,9 +15,11 @@ public class UsuarioViewModel extends ViewModel{
 
 	private Map<String, Object> params = new HashMap<>();
 
-	public UsuarioViewModel(String error, String logout) {
-		params.put("error", error!=null);
-		params.put("logout", logout!=null);
+	public UsuarioViewModel(Boolean success, String retorno) {
+		if (success!=null) {
+			params.put("sucesso", success);
+			params.put("retorno", retorno);
+		}
 	}
 
 	public UsuarioViewModel(Usuario usuario) {

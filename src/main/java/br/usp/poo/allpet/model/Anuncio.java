@@ -46,9 +46,6 @@ public class Anuncio {
 	@Column(nullable = false)
 	private Animal animal;
 	
-	@Lob
-	private byte[] foto;
-	
 	@Column(nullable = false)
 	private Short usuario;
 	

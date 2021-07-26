@@ -26,11 +26,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.GET, "/").permitAll()
 		.antMatchers(HttpMethod.GET, "/cadastro").permitAll()
 		.antMatchers(HttpMethod.POST, "/cadastro").permitAll()
+		.antMatchers(HttpMethod.GET, "/login").permitAll()
+		.antMatchers(HttpMethod.GET, "/anuncio").permitAll()
 		.anyRequest().authenticated()
-		.and().formLogin().loginPage("/login").failureUrl("/login?error").permitAll()
+		.and().formLogin().loginPage("/login").failureUrl("/login?sucesso=false&retorno=Login+invalido!")
 		.and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/login?logout").permitAll()
+				.logoutSuccessUrl("/login?sucesso=true&retorno=Logout+feito+com+sucesso!")
 				.deleteCookies();
 	}
 
