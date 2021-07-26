@@ -29,7 +29,7 @@ public class UsuarioViewModel extends ViewModel{
 		params.put("anuncios", anuncios);
 	}
 	
-	
+    //adiciona o email na hashMap e retorna todos os parâmetros
 	@Override
 	public Map<String, Object> getParams() {
 		AuthUser authUser = new AuthUser();
