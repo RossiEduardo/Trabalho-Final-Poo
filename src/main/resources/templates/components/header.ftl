@@ -1,4 +1,4 @@
-<header>
+<header class="unselectable">
     <h1>allPet</h1>
     <nav>
         <ul>

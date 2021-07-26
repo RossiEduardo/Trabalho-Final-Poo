@@ -25,13 +25,17 @@ public class AnuncioService {
     public AnuncioViewModel getAnuncio(int id) {
         return new AnuncioViewModel(anuncioRepository.getById(id));
     }
+
+    public AnuncioViewModel getCriar(String userEmail) {
+        return new AnuncioViewModel();
+    }
     
     //Cadastrar um anúncio
-    public void cadastrar(String titulo, short user_id, String cidade,
+    public void cadastrar(String titulo, String user_email, String cidade,
                           String endereco, String descricao, String telefone,
-                          byte[] foto, Animal animal, String email) {
-
-        Anuncio newAnuncio = new Anuncio(null, titulo, descricao, endereco, cidade, telefone, email, animal, foto, user_id);
+                          Animal animal, String email) {
+        Usuario usuario = usuarioRepository.findByEmail(user_email);
+        Anuncio newAnuncio = new Anuncio(null, titulo, descricao, endereco, cidade, telefone, email, animal, usuario.getId());
         anuncioRepository.save(newAnuncio);
     }
     

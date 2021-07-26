@@ -1,0 +1,44 @@
+body > header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #e65100;
+}
+
+body > header h1 {
+    color: white;
+    font-size: 90px;
+    text-align: center;
+    margin: 5px 0;
+}
+
+body > header nav {
+    margin: 0 0 5px;
+}
+
+body > header ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+body > header ul li {
+    margin: 0 15px;
+}
+
+body > header ul li a {
+    font-size: 30px;
+    font-weight: bold;
+    transition: 0.1s;
+    color: white;
+}
+
+body > header ul li a:hover,
+body > header ul li a:focus {
+    color: #ffe0b2;
+}
+
+body > header ul li a:active {
+    color: #fff3e0;
+}
