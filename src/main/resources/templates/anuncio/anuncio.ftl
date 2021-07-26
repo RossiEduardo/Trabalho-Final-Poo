@@ -9,7 +9,7 @@
 		<#include "/components/user-space.ftl"/>
 
         <#if anuncio??>
-            <h2>Anúncio ${anuncio.id}</p>
+            <h2>Anúncio ${anuncio.id}</h2>
             <p>Título: ${anuncio.titulo}</p>
             <p>Descrição: ${anuncio.descricao}</p>
             <p>Endereço: ${anuncio.endereco}</p>
