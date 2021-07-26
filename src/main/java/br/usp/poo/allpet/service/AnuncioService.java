@@ -5,8 +5,12 @@ import br.usp.poo.allpet.model.Anuncio;
 import br.usp.poo.allpet.model.Usuario;
 import br.usp.poo.allpet.repository.AnuncioRepository;
 import br.usp.poo.allpet.repository.UsuarioRepository;
+import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AnuncioService {
@@ -14,8 +18,8 @@ public class AnuncioService {
     @Autowired
     private AnuncioRepository anuncioRepository;
 
-    public Anuncio getAnuncio(int id) {
-        return anuncioRepository.getById(id);
+    public AnuncioViewModel getAnuncio(int id) {
+        return new AnuncioViewModel(anuncioRepository.getById(id));
     }
 
     public void cadastrar(String titulo, short user_id, String cidade,
@@ -24,6 +28,22 @@ public class AnuncioService {
 
         Anuncio newAnuncio = new Anuncio(null, titulo, descricao, endereco, cidade, telefone, email, animal, foto, user_id);
         anuncioRepository.save(newAnuncio);
+    }
+
+    public AnuncioViewModel buscar(String cidade, Animal animal) {
+        if (cidade != null && animal != null)
+            return new AnuncioViewModel(anuncioRepository.getByCidadeAnimal(cidade, animal));
+        if (animal == null)
+            return new AnuncioViewModel(anuncioRepository.getByCidade(cidade));
+
+        return new AnuncioViewModel(anuncioRepository.getByAnimal(animal));
+    }
+    
+    public AnuncioViewModel getAnuncioByUsuario (Short idUsuario) {
+    	
+    	
+    	return new AnuncioViewModel(anuncioRepository.getByUsuario(idUsuario));
+    	
     }
 
 }
