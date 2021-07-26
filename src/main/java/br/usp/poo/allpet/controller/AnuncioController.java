@@ -2,6 +2,7 @@ package br.usp.poo.allpet.controller;
 
 import br.usp.poo.allpet.enums.Animal;
 import br.usp.poo.allpet.model.Anuncio;
+import br.usp.poo.allpet.security.AuthUser;
 import br.usp.poo.allpet.service.AnuncioService;
 import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,15 +37,14 @@ public class AnuncioController {
     //Recebe os dados do anúncio e adiciona no banco de dados
     @PostMapping("/criar")
     public void criar(@RequestParam String titulo,
-                          @RequestParam short user_id,
                           @RequestParam String cidade,
                           @RequestParam String endereco,
                           @RequestParam String descricao,
                           @RequestParam String telefone,
                           @RequestParam String email,
                           @RequestParam Animal animal) {
-
-        anuncioService.cadastrar(titulo, user_id, cidade, endereco, descricao, telefone, animal, email);
+        String user_mail = AuthUser.getEmail();
+        anuncioService.cadastrar(titulo, user_mail, cidade, endereco, descricao, telefone, animal, email);
 
     }
     
