@@ -22,4 +22,22 @@ public class IndexController {
 		return new ModelAndView("index/inicio", vm.getParams());
 	}
 
+	@GetMapping("/sobre")
+	public ModelAndView getSobre() {
+		IndexViewModel vm = indexService.getIndexViewModel();
+		return new ModelAndView("index/sobre", vm.getParams());
+	}
+
+	@GetMapping("/contato")
+	public ModelAndView getContato() {
+		IndexViewModel vm = indexService.getIndexViewModel();
+		return new ModelAndView("index/contato", vm.getParams());
+	}
+
+	@GetMapping("/denuncia")
+	public ModelAndView getDenuncia() {
+		IndexViewModel vm = indexService.getIndexViewModel();
+		return new ModelAndView("index/denuncia", vm.getParams());
+	}
+
 }
