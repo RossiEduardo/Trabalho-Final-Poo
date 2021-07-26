@@ -51,7 +51,6 @@ public class RunnerConfig {
 					"164565161",
 					"lucasf.almeida@usp.br",
 					Animal.CACHORRO,
-					null,
 					(short) 1
 			);
 
@@ -64,7 +63,6 @@ public class RunnerConfig {
 					"164565161",
 					"lucasf.almeida@usp.br",
 					Animal.GATO,
-					null,
 					(short) 2
 			);
 			
