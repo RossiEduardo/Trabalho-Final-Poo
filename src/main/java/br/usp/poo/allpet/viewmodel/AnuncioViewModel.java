@@ -25,7 +25,7 @@ public class AnuncioViewModel {
     //adiciona o email na hashMap e retorna todos os parâmetros
     public Map<String, Object> getParams() {
         String authEmail = AuthUser.getEmail();
-        params.put("username", authEmail);
+        params.put("usuario", authEmail);
         return params;
     }
 }

@@ -27,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.GET, "/cadastro").permitAll()
 		.antMatchers(HttpMethod.POST, "/cadastro").permitAll()
 		.antMatchers(HttpMethod.GET, "/login").permitAll()
-		.antMatchers(HttpMethod.GET, "/anuncio").permitAll()			
+		.antMatchers(HttpMethod.GET, "/anuncio").permitAll()
 		.anyRequest().authenticated()
 		.and().formLogin().loginPage("/login").failureUrl("/login?sucesso=false&retorno=Login+invalido!")
 		.and().logout()
