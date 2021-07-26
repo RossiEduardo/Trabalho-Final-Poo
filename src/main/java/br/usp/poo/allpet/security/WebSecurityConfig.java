@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.and().formLogin().loginPage("/login").failureUrl("/login?error").permitAll()
 		.and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/login?ls").permitAll()
+				.logoutSuccessUrl("/login?logout").permitAll()
 				.deleteCookies();
 	}
 

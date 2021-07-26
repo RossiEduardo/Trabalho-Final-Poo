@@ -31,10 +31,10 @@ public class UsuarioController {
     }
 
     @GetMapping("/login")
-    public ModelAndView login(@RequestParam(required=false) String error, @RequestParam(required=false) String ls) {
+    public ModelAndView login(@RequestParam(required=false) String error, @RequestParam(required=false) String logout) {
         HashMap<String, Object> params = new HashMap<>();
         params.put("error", error!=null);
-        params.put("logout", ls!=null);
+        params.put("logout", logout!=null);
         return new ModelAndView("usuario/login", params);
     }
 
