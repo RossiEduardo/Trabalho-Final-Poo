@@ -10,16 +10,20 @@
 
         <p>${usuario.nome}<p>
 
-        <#if retorno??>
-                    <p class="${sucesso?then('mensagem-sucesso','mensagem-erro')}">${retorno}</p>
-                </#if>
-                <form action="/anuncio/delete" method="post">
-                    Deletar Anuncio: <input type="text" name="idAnuncio" />
-                    <input type="submit" />
-                </form>
+        <#if sucesso??>
+            <#if sucesso>
+                <p class="mensagem-sucesso">Usuário atualizado com sucesso</p>
+            <#else>
+                <p class="mensagem-erro">Ocorreu um erro na atualização do usuário</p>
+            </#if>
+        </#if>
 
         <#list anuncios as anuncio>
             <p>${anuncio.titulo}</p>
+            <form action="/anuncio/delete" method="post">
+                <input type="hidden" name="anuncioId" value="${anuncio.id}" />
+                <input type="submit" />
+            </form>
         </#list>
     </body>
 </html>
