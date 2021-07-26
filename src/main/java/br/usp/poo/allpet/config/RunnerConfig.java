@@ -26,7 +26,7 @@ public class RunnerConfig {
 					"98765432100", // CPF
 					"+5511926104254", // Telefone
 					"lucasf.almeida@usp.br", // E-mail
-					"123" // Senha
+					"$2a$10$gBFN.fLsEJUslH6ILQ9pJuvMWVgwjN.uNpqkHBrjO/Hx.SzPM1Z8." // Senha
 				);
 			Usuario usuario2 = new Usuario(
 					null,
@@ -35,7 +35,7 @@ public class RunnerConfig {
 					"12345678910",
 					"+551144513245",
 					"adrio.oliveira@usp.br",
-					"456"
+					"$2a$10$/tvGxvYQ19l0eRppVwFjzuARNLpKOl4vmxTGvzKkIU5fftpyooGna"
 				);
 			usuarioRepository.saveAll(List.of(usuario1, usuario2));
 			

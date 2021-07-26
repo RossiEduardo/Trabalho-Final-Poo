@@ -3,6 +3,7 @@ package br.usp.poo.allpet.service;
 import br.usp.poo.allpet.model.Usuario;
 import br.usp.poo.allpet.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,7 +21,7 @@ public class UsuarioService {
         boolean isInDb = checkUserInDb(email);
         if (isInDb)
             return "Usuário já cadastrado!";
-        Usuario user = new Usuario(null,  nome, cidade, cpf, telefone, email, senha);
+        Usuario user = new Usuario(null,  nome, cidade, cpf, telefone, email, new BCryptPasswordEncoder().encode(senha));
         usuarioRepository.save(user);
         return "Usuário cadastrado com sucesso!";
     }
