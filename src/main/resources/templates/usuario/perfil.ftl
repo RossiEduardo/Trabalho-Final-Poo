@@ -17,7 +17,7 @@
         <#list anuncios as anuncio>
             <p>${anuncio.titulo}</p>
             <form action="/anuncio/delete" method="post">
-                <input type="hidden" name="anuncioId" value="${anuncio.id}" />
+                <input type="hidden" name="idAnuncio" value="${anuncio.id}" />
                 <input type="submit" />
             </form>
         </#list>
