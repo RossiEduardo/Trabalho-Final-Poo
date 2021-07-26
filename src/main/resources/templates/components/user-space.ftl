@@ -1,5 +1,5 @@
 <article id="user-space">
-    <#if usuario??>
+    <#if username??>
         <a href="/perfil" class="perfil-link">
             <div class="perfil"><img src="/img/user-icon.png"/></div>
         </a>
