@@ -1,5 +1,5 @@
 <header class="unselectable">
-    <h1>allPet</h1>
+    <a href="/"><h1>allPet</h1></a>
     <nav>
         <ul>
             <li><a href="/sobre">Sobre</a></li>
