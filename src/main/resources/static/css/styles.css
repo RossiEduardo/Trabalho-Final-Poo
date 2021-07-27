@@ -9,6 +9,10 @@
     outline: none;
 }
 
+.preload * {
+    transition: none !important;
+}
+
 a {
     text-decoration: none;
 }
@@ -52,6 +56,7 @@ main {
 .mensagem-sucesso,
 .mensagem-erro {
     margin: 0 0 10px;
+    text-align: center;
 }
 
 .mensagem-sucesso {
@@ -65,6 +70,7 @@ main {
 h2 {
     font-size: 30px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 form {
@@ -96,7 +102,7 @@ form textarea,
 form select {
     border: none;
     border-bottom: 2px solid lightgray;
-    transition: border-color 0.3s;
+    transition: all 0.3s;
 }
 
 form input[type='email']:focus,
