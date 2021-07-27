@@ -30,8 +30,8 @@ body > header ul li {
 body > header ul li a {
     font-size: 30px;
     font-weight: bold;
-    transition: 0.1s;
     color: white;
+    transition: all 0.1s;
 }
 
 body > header ul li a:hover,
