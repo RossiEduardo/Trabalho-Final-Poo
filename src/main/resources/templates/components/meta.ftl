@@ -5,3 +5,6 @@
 <link rel="stylesheet" href="/css/styles.css" />
 <link rel="stylesheet" href="/css/components/header.css" />
 <link rel="stylesheet" href="/css/components/user-space.css" />
+<link rel="stylesheet" href="/css/components/lista-de-anuncios.css" />
+<link rel="stylesheet" href="/css/components/filtro-de-anuncio.css" />
+<script src="/js/preload.js" defer></script>
