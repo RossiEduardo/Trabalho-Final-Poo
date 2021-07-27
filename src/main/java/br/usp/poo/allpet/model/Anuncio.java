@@ -1,5 +1,7 @@
 package br.usp.poo.allpet.model;
 
+import java.util.Base64;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -48,5 +50,17 @@ public class Anuncio {
 	
 	@Column(nullable = false)
 	private Short usuario;
+	
+	@Column(columnDefinition = "MEDIUMBLOB", nullable=false)
+	private byte[] bytes;
+	
+	
+	public String getImagem() {
+        byte[] imgBytes = Base64.getEncoder().encode (this.getBytes());
+        String img = new String (imgBytes);
+		img = "data:image/png;base64," + img;
+		
+		return img;
+	}
 	
 }

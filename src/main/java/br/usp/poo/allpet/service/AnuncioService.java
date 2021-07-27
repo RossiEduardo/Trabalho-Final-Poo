@@ -10,8 +10,10 @@ import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -37,13 +39,25 @@ public class AnuncioService {
     //Cadastrar um anúncio
     public boolean cadastrar(String titulo, String user_email, String cidade,
                           String endereco, String descricao, String telefone,
-                          Animal animal, String email) {
+                          Animal animal, String email, MultipartFile foto) {
+    	
     	if(titulo.length() == 0 || user_email.length() == 0 || cidade.length() == 0 || endereco.length() == 0
-    			|| descricao.length() == 0 || telefone.length() == 0 || email.length() == 0) {
+    			|| descricao.length() == 0 || telefone.length() == 0 || email.length() == 0 || foto == null) {
     		return false;
     	}
+    	
         Usuario usuario = usuarioRepository.findByEmail(user_email);
-        Anuncio newAnuncio = new Anuncio(null, titulo, descricao, endereco, cidade, telefone, email, animal, usuario.getId());
+        
+        byte[] bytes=null;
+		try {
+			bytes = foto.getBytes();
+			System.out.println("\n\n"+ bytes.length);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+        Anuncio newAnuncio = new Anuncio(null, titulo, descricao, endereco, cidade, telefone, email, animal, usuario.getId(), bytes);
         anuncioRepository.save(newAnuncio);
 		return true;
     }
