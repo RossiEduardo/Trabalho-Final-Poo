@@ -8,8 +8,10 @@ import org.springframework.context.annotation.Configuration;
 
 import br.usp.poo.allpet.enums.Animal;
 import br.usp.poo.allpet.model.Anuncio;
+import br.usp.poo.allpet.model.Image;
 import br.usp.poo.allpet.model.Usuario;
 import br.usp.poo.allpet.repository.AnuncioRepository;
+import br.usp.poo.allpet.repository.ImageRepository;
 import br.usp.poo.allpet.repository.UsuarioRepository;
 
 @Configuration
@@ -19,7 +21,7 @@ public class RunnerConfig {
 	
 	//Criando usuários
 	@Bean
-	CommandLineRunner commandLineRunner(UsuarioRepository usuarioRepository, AnuncioRepository anuncioRepository) {
+	CommandLineRunner commandLineRunner(UsuarioRepository usuarioRepository, AnuncioRepository anuncioRepository, ImageRepository imageRepository) {
 		return args -> {
 			Usuario usuario1 = new Usuario(
 					null, // Id (auto gerado)
@@ -67,6 +69,16 @@ public class RunnerConfig {
 			);
 			
 			anuncioRepository.saveAll(List.of(anuncio, anuncio2)); //Salvando no Banco de Dados
+			
+			Image img = new Image(
+					null,
+					"a",
+					"b",
+					null,
+					null
+			);
+			imageRepository.save(img);
+			
 		};
 	}
 	
