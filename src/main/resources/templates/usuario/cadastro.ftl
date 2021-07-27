@@ -22,22 +22,22 @@
                 
                 <form action="/cadastro" method="post">
                     <label for="nome">Nome</label>
-                    <input type="text" name="nome" placeholder="Fulano da Silva" />
+                    <input maxlength="100" type="text" name="nome" placeholder="Fulano da Silva" />
 
                     <label for="cidade">Cidade</label>
-                    <input type="text" name="cidade" placeholder="São Carlos" />
+                    <input maxlength="100" type="text" name="cidade" placeholder="São Carlos" />
                     
                     <label for="cpf">CPF</label>
-                    <input type="text" name="cpf" placeholder="xxx.xxx.xxx-xx" />
+                    <input maxlength="30" type="text" name="cpf" placeholder="xxx.xxx.xxx-xx" />
 
                     <label for="telefone">Telefone</label>
-                    <input type="tel" name="telefone" placeholder="(xx) xxxxx-xxxx" />
+                    <input maxlength="30" type="tel" name="telefone" placeholder="(xx) xxxxx-xxxx" />
                     
                     <label for="email">E-mail</label>
-                    <input type="email" name="email" placeholder="meu@email.com" />
+                    <input maxlength="64" type="email" name="email" placeholder="meu@email.com" />
 
                     <label for="senha">Senha</label>
-                    <input type="password" name="senha" placeholder="minhasenha" />
+                    <input maxlength="100" type="password" name="senha" placeholder="minhasenha" />
                     
                     <input type="submit" value="Finalizar cadastro" />
                 </form>

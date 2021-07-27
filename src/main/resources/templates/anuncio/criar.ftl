@@ -24,22 +24,22 @@
                 <form action="/anuncio/criar" method="post">
 
                     <label for="titulo">Título</label>
-                    <input type="text" name="titulo" />
+                    <input maxlength="60" type="text" name="titulo" />
                     
                     <label for="descricao">Descrição</label>
-                    <textarea name="descricao" rows="3"></textarea>
+                    <textarea maxlength="1000" name="descricao" rows="3"></textarea>
                     
                     <label for="endereco">Endereço</label>
-                    <input type="text" name="endereco" />
+                    <input maxlength="120" type="text" name="endereco" />
                     
                     <label for="cidade">Cidade</label>
-                    <input type="text" name="cidade" value="${usuario.cidade}" />
+                    <input maxlength="100" type="text" name="cidade" value="${usuario.cidade}" />
                     
                     <label for="telefone">Telefone</label>
-                    <input type="tel" name="telefone" value="${usuario.telefone}"/>
+                    <input maxlength="30" type="tel" name="telefone" value="${usuario.telefone}"/>
                     
                     <label for="email">E-mail</label>
-                    <input type="email" name="email" value="${usuario.email}"/>
+                    <input maxlength="64" type="email" name="email" value="${usuario.email}"/>
                     
                     <label for="animal">Animal</label>
                     <select name="animal">

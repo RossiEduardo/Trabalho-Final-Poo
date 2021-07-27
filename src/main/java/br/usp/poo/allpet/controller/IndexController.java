@@ -1,9 +1,8 @@
 package br.usp.poo.allpet.controller;
 
-import br.usp.poo.allpet.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.usp.poo.allpet.service.IndexService;

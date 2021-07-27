@@ -20,6 +20,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Usuario implements UserDetails {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3642540175242291852L;
+
 	//entidade referente às tabelas do banco de dados
 	//com as informaçãoes de cada coluna
 	@Id

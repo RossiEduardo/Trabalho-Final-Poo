@@ -1,13 +1,13 @@
 package br.usp.poo.allpet.repository;
 
-import br.usp.poo.allpet.enums.Animal;
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
-import br.usp.poo.allpet.model.Anuncio;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.util.List;
+import br.usp.poo.allpet.enums.Animal;
+import br.usp.poo.allpet.model.Anuncio;
 
 public interface AnuncioRepository extends JpaRepository<Anuncio, Integer> {
 	//Cria as querys do banco de dados

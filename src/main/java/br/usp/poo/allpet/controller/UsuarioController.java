@@ -1,22 +1,17 @@
 package br.usp.poo.allpet.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
 import br.usp.poo.allpet.model.Usuario;
 import br.usp.poo.allpet.repository.UsuarioRepository;
 import br.usp.poo.allpet.security.AuthUser;
-import br.usp.poo.allpet.service.AnuncioService;
 import br.usp.poo.allpet.service.UsuarioService;
-import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
 import br.usp.poo.allpet.viewmodel.UsuarioViewModel;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
-
-import java.util.HashMap;
 
 @RestController
 public class UsuarioController {
@@ -24,8 +19,6 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
     
-    @Autowired
-    private AnuncioService anuncioService;
 
     @Autowired
     private UsuarioRepository usuarioRepository;

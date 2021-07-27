@@ -5,9 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 
 import br.usp.poo.allpet.enums.Animal;
 import lombok.AllArgsConstructor;
@@ -37,7 +34,7 @@ public class Anuncio {
 	@Column(length = 100, nullable = false)
 	private String cidade;
 	
-	@Column(length = 14, nullable = false)
+	@Column(length = 30, nullable = false)
 	private String telefone;
 	
 	@Column(length = 64, nullable = false)

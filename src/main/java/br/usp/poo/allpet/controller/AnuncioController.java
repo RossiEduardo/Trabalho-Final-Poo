@@ -1,17 +1,18 @@
 package br.usp.poo.allpet.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
 import br.usp.poo.allpet.enums.Animal;
-import br.usp.poo.allpet.model.Anuncio;
 import br.usp.poo.allpet.security.AuthUser;
 import br.usp.poo.allpet.service.AnuncioService;
 import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/anuncio")
@@ -58,10 +59,10 @@ public class AnuncioController {
     
     //Procura os anúncios que estão de acordo com uma região e animal
     @GetMapping("/busca")
-    public ModelAndView busca(@RequestParam(required=false) String regiao, @RequestParam(required=false) Animal animal) {
+    public ModelAndView busca(@RequestParam(required=false) String cidade, @RequestParam(required=false) Animal animal) {
 
-        AnuncioViewModel avm = anuncioService.buscar(regiao, animal);
-        return new ModelAndView("anuncio/busca", avm.getParams());
+        AnuncioViewModel avm = anuncioService.buscar(cidade, animal);
+        return new ModelAndView("index/inicio", avm.getParams());
     }
     
     //Deleta um anúncio, dado o id, do banco de dados

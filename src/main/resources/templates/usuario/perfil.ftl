@@ -18,6 +18,10 @@
                 margin: 0;
                 
             }
+
+            hr {
+                margin: 18px 0 10px;
+            }
         </style>
     </head>
     <body class="preload">
@@ -36,26 +40,24 @@
 
                 <form action="/perfil" method="post" id="form-atualizar-perfil">
                     <label for="nome">Nome</label>
-                    <input size="4" type="text" name="nome" value="${usuario.nome}" />
+                    <input maxlength="100" type="text" name="nome" value="${usuario.nome}" />
 
                     <label for="cidade">Cidade</label>
-                    <input size="4" type="text" name="cidade" value="${usuario.cidade}" />
+                    <input maxlength="100" type="text" name="cidade" value="${usuario.cidade}" />
                     
                     <label for="cpf">CPF</label>
-                    <input size="11" type="text" name="cpf" value="${usuario.cpf}" />
+                    <input maxlength="30" size="" type="text" name="cpf" value="${usuario.cpf}" />
 
                     <label for="telefone">Telefone</label>
-                    <input size="8" type="tel" name="telefone" value="${usuario.telefone}" />
+                    <input maxlength="30" type="tel" name="telefone" value="${usuario.telefone}" />
                     
                     <label for="email">E-mail</label>
-                    <input type="email" name="email" value="${usuario.email}" />
+                    <input maxlength="64" type="email" name="email" value="${usuario.email}" />
 
                     <label for="senha">Senha</label>
-                    <input size="3" type="password" name="senha" />
-
-                    <input type="hidden" name="id" value="${usuario.id}">
+                    <input maxlength="100" type="password" name="senha" />
                     
-                    <input type="submit" disabled="true" value="Salvar" />
+                    <input type="submit" value="Salvar" />
                 </form>
 
                 <h3>Minhas postagens</h3>
@@ -77,6 +79,7 @@
                             <input type="hidden" name="idAnuncio" value="${anuncio.id}" />
                             <input type="submit" value="Excluir"/>
                         </form>
+                        <hr/>
                     </#list>
                 </ul>
 

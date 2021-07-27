@@ -34,10 +34,10 @@
 
                 <form action="login" method="post">
                     <label for="username">E-mail</label>
-                    <input type="email" name="username" placeholder="meu@email.com" />
+                    <input maxlength="64" type="email" name="username" placeholder="meu@email.com" />
 
                     <label for="password">Senha</label>
-                    <input type="password" name="password" placeholder="minhasenha" />
+                    <input maxlength="100" type="password" name="password" placeholder="minhasenha" />
 
                     <input type="submit" value="Login" />
                 </form>
