@@ -33,13 +33,13 @@
                     <input type="text" name="endereco" />
                     
                     <label for="cidade">Cidade</label>
-                    <input type="text" name="cidade" />
+                    <input type="text" name="cidade" value="${usuario.cidade}" />
                     
                     <label for="telefone">Telefone</label>
-                    <input type="tel" name="telefone" />
+                    <input type="tel" name="telefone" value="${usuario.telefone}"/>
                     
                     <label for="email">E-mail</label>
-                    <input type="email" name="email"/>
+                    <input type="email" name="email" value="${usuario.email}"/>
                     
                     <label for="animal">Animal</label>
                     <select name="animal">
