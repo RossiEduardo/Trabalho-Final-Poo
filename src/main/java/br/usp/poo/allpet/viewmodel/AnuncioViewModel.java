@@ -16,10 +16,6 @@ import java.util.Map;
 public class AnuncioViewModel {
     private Map<String, Object> params = new HashMap<>();
 
-    public AnuncioViewModel() {
-        params.put("animais", List.of("gato", "cachorro"));
-    }
-
     public AnuncioViewModel(Anuncio anuncio) {
         params.put("anuncio", anuncio);
     }
