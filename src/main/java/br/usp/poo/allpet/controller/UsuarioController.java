@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -82,14 +84,13 @@ public class UsuarioController {
     }
 
     @PostMapping("/perfil")
-    public ModelAndView alterPerfil(@RequestParam Short id, @RequestParam String email, @RequestParam String nome, @RequestParam String senha, @RequestParam String cpf,
+    public ModelAndView alterPerfil(@RequestParam String email, @RequestParam String nome, @RequestParam String senha, @RequestParam String cpf,
                                     @RequestParam String cidade, @RequestParam String telefone) {
         //Encontra o usúario pelo email e mostra todos os seus anúncios
         String authEmail = AuthUser.getEmail();
         Usuario authUser = usuarioRepository.findByEmail(authEmail);
-        if (!authUser.getId().equals(id))
-            return new ModelAndView("redirect:/perfil?success=false");
-        Usuario usuario = new Usuario(id, nome, cidade, cpf, telefone, email, senha);
+
+        Usuario usuario = new Usuario(authUser.getId(), nome, cidade, cpf, telefone, email, new BCryptPasswordEncoder().encode(senha));
         return usuarioService.updateUser(usuario);
     }
 
