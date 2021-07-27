@@ -37,7 +37,7 @@ public class AnuncioController {
     
     //Recebe os dados do anúncio e adiciona no banco de dados
     @PostMapping("/criar")
-    public void criar(@RequestParam String titulo,
+    public ModelAndView criar(@RequestParam String titulo,
                           @RequestParam String cidade,
                           @RequestParam String endereco,
                           @RequestParam String descricao,
@@ -45,7 +45,15 @@ public class AnuncioController {
                           @RequestParam String email,
                           @RequestParam Animal animal) {
         String user_mail = AuthUser.getEmail();
-        anuncioService.cadastrar(titulo, user_mail, cidade, endereco, descricao, telefone, animal, email);
+        
+        boolean resultado = anuncioService.cadastrar(titulo, user_mail, cidade, endereco, descricao, telefone, animal, email);
+        
+        //se deu algum erro ao criar o anuncio o usuário é redirecionado para a página de cadastro de anúncios novamente
+        if(resultado == false)
+        	return new ModelAndView("redirect:/anuncio/criar?sucesso=false&retorno=Campo+nulo");
+        
+		return new ModelAndView("redirect:/?sucesso=true&retorno=anuncio+cadastrado");
+
 
     }
     
