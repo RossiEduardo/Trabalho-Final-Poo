@@ -8,6 +8,7 @@ import br.usp.poo.allpet.viewmodel.UsuarioViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 
@@ -33,6 +34,15 @@ public class UsuarioService {
         Usuario user = new Usuario(null,  nome, cidade, cpf, telefone, email, new BCryptPasswordEncoder().encode(senha));
         usuarioRepository.save(user);
         return true;
+    }
+
+    public ModelAndView updateUser(Usuario usuario) {
+        if (usuario.getCidade().length() == 0 || usuario.getNome().length() == 0 ||
+                usuario.getCpf().length() == 0 || usuario.getTelefone().length() == 0 ||
+                usuario.getEmail().length() == 0 || usuario.getSenha().length() == 0)
+            return new ModelAndView("redirect:/perfil?success=false");
+        usuarioRepository.save(usuario);
+        return new ModelAndView("redirect:/perfil?success=true");
     }
 
     public Usuario getUserById(short id) {

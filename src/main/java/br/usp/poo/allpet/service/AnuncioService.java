@@ -25,6 +25,13 @@ public class AnuncioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    public ModelAndView getCriarPage() {
+        String email = AuthUser.getEmail();
+        Usuario usuario = usuarioRepository.findByEmail(email);
+        AnuncioViewModel avm = new AnuncioViewModel(usuario, Animal.values());
+        return new ModelAndView("anuncio/criar", avm.getParams());
+    }
+
     public AnuncioViewModel getAnuncio(int id) {
         return new AnuncioViewModel(anuncioRepository.getById(id));
     }
@@ -57,7 +64,7 @@ public class AnuncioService {
     
     //Busca os anúncios dado uma cidade e um animal
     public AnuncioViewModel buscar(String cidade, Animal animal) {
-        if (cidade != null && animal != null)
+        if (cidade != null && cidade.length() > 0 && animal != null)
             return new AnuncioViewModel(anuncioRepository.getByCidadeAnimal(cidade, animal));
         if (animal == null)
             return new AnuncioViewModel(anuncioRepository.getByCidade(cidade));
