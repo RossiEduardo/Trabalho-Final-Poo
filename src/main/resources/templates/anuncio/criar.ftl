@@ -48,7 +48,7 @@
                         </#list>
                     </select>
                     
-                    
+                    <label for="foto">Foto</label>
                     <input type="file" name="foto" />
                     
                     

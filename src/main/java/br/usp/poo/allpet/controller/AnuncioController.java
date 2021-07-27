@@ -7,6 +7,7 @@ import br.usp.poo.allpet.service.AnuncioService;
 import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -76,6 +77,13 @@ public class AnuncioController {
     	//após o delete redireciona para a página do perfil do usuário logado no site
     	//adiona na url o retorno da busca, done ou error
     	return new ModelAndView("redirect:/perfil?" + str);
+    }
+    
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ModelAndView handleMaxSizeException(
+      MaxUploadSizeExceededException exc) {
+ 
+        return new ModelAndView("redirect:/anuncio/criar?sucesso=false&retorno=arquivo+grande+de+mais");
     }
 
 }

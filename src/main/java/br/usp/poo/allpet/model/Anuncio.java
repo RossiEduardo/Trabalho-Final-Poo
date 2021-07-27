@@ -51,7 +51,7 @@ public class Anuncio {
 	@Column(nullable = false)
 	private Short usuario;
 	
-	@Column(columnDefinition = "MEDIUMBLOB", nullable=true)
+	@Column(columnDefinition = "MEDIUMBLOB", nullable=false)
 	private byte[] bytes;
 	
 	
@@ -60,7 +60,7 @@ public class Anuncio {
         String img = new String (imgBytes);
 		img = "data:image/png;base64," + img;
 		
-		return img;		
+		return img;
 	}
 	
 }

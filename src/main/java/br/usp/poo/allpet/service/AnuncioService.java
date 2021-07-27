@@ -33,10 +33,12 @@ public class AnuncioService {
     public boolean cadastrar(String titulo, String user_email, String cidade,
                           String endereco, String descricao, String telefone,
                           Animal animal, String email, MultipartFile foto) {
+    	
     	if(titulo.length() == 0 || user_email.length() == 0 || cidade.length() == 0 || endereco.length() == 0
-    			|| descricao.length() == 0 || telefone.length() == 0 || email.length() == 0) {
+    			|| descricao.length() == 0 || telefone.length() == 0 || email.length() == 0 || foto == null) {
     		return false;
     	}
+    	
         Usuario usuario = usuarioRepository.findByEmail(user_email);
         
         byte[] bytes=null;
