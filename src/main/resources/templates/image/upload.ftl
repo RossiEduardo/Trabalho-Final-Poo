@@ -6,8 +6,8 @@
 	<body>
 		<p> Upload </p>
 		
-		<form action="image/upload" method="post">
-			<input type="file" name="file">
+        <form action="/image/post" method="post" enctype="multipart/form-data">
+			<input type="file" name="file" />
 			<input type="submit" value="FAZER UPLOAD"/>
 		</form>
 	

@@ -7,12 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.ResponseEntity.BodyBuilder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,6 +15,7 @@ import br.usp.poo.allpet.model.Image;
 import br.usp.poo.allpet.repository.ImageRepository;
 import br.usp.poo.allpet.service.AnuncioService;
 import br.usp.poo.allpet.service.ImageService;
+import br.usp.poo.allpet.viewmodel.ImageViewModel;
 
 @RestController
 @RequestMapping("/image")
@@ -34,30 +30,35 @@ public class ImageController {
     public ModelAndView view() {
     	return new ModelAndView("image/upload");
     }
-    /*
-    @PostMapping("/upload")
-    public BodyBuilder upload(@RequestParam MultipartFile file) throws IOException {
+    
+    @PostMapping("/post")
+    public String upload(@RequestParam MultipartFile file) throws IOException {
             System.out.println("Original Image Byte Size - " + file.getBytes().length);
-            Image img = new Image(null, file.getOriginalFilename(), file.getContentType(), file.getBytes());
+            Image img = new Image(null, file.getOriginalFilename(), file.getContentType(), file.getBytes(), null);
             
             imageRepository.save(img);
             
-            return ResponseEntity.status(HttpStatus.OK);
+            return "done";
         }
-    */
-
-    @PostMapping("/upload")
-    public String upload(@RequestParam MultipartFile file) {
-    	imageService.saveImage(file);
+    
+    /*
+    @PostMapping("/post")
+    public String upload(@RequestParam MultipartFile imgFile) {
+    	System.out.println("\n\n---- entrei 00000-----");
+    	imageService.saveImage(imgFile);
     	return "done";
     }
-    /*
-        @GetMapping(path = { "/get/{imageName}" })
-        public Image getImage(@PathVariable("imageName") String imageName) throws IOException {
+    */
+    
+        @GetMapping("get/{imageName}")
+        public ModelAndView getImage(@PathVariable("imageName") String imageName) throws IOException {
             Optional<Image> retrievedImage = imageRepository.findByName(imageName);
             Image img = new Image(null, retrievedImage.get().getName(), retrievedImage.get().getType(),
-            		retrievedImage.get().getPicBytes());
-            return img;
+            		retrievedImage.get().getPicBytes(), null);
+            //return img;
+            ImageViewModel ivm = new ImageViewModel(img);
+            return new ModelAndView("image/get", ivm.getParams());
+            
         }
-    */
+    
 }

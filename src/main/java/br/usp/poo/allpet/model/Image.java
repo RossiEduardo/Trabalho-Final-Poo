@@ -30,10 +30,10 @@ public class Image {
 	@Column(nullable = true)
 	private String type;
 
-	@Column(nullable = true)
+	@Column(nullable = true, length=1000)
 	private byte[] picBytes;
 
-	@Column(nullable = true)
+	@Column(nullable = true, length=9999)
 	private String content;
 	
 	
