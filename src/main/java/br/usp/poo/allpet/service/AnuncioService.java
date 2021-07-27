@@ -27,12 +27,17 @@ public class AnuncioService {
     }
     
     //Cadastrar um anúncio
-    public void cadastrar(String titulo, short user_id, String cidade,
+    public boolean cadastrar(String titulo, String user_email, String cidade,
                           String endereco, String descricao, String telefone,
-                          byte[] foto, Animal animal, String email) {
-
-        Anuncio newAnuncio = new Anuncio(null, titulo, descricao, endereco, cidade, telefone, email, animal, foto, user_id);
+                          Animal animal, String email) {
+    	if(titulo.length() == 0 || user_email.length() == 0 || cidade.length() == 0 || endereco.length() == 0
+    			|| descricao.length() == 0 || telefone.length() == 0 || email.length() == 0) {
+    		return false;
+    	}
+        Usuario usuario = usuarioRepository.findByEmail(user_email);
+        Anuncio newAnuncio = new Anuncio(null, titulo, descricao, endereco, cidade, telefone, email, animal, usuario.getId());
         anuncioRepository.save(newAnuncio);
+		return true;
     }
     
     //Busca os anúncios dado uma cidade e um animal

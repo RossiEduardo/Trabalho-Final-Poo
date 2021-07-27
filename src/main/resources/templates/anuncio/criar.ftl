@@ -42,7 +42,7 @@
                     <label for="animal">Animal</label>
                     <select name="animal">
                         <#list animais as animal>
-                            <option>${animal?capitalize}</option>
+                            <option>${animal?upper_case}</option>
                         </#list>
                     </select>
                     
