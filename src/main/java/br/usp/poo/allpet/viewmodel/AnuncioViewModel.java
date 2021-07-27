@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,12 @@ public class AnuncioViewModel {
 
     public AnuncioViewModel(Anuncio anuncio) {
         params.put("anuncio", anuncio);
+        
+        byte[] imgBytes = Base64.getEncoder().encode (anuncio.getBytes());
+        String img = new String (imgBytes);
+		img = "data:image/png;base64," + img;
+        
+        params.put("image", img);
     }
 
     public AnuncioViewModel(List<Anuncio> anuncios) {

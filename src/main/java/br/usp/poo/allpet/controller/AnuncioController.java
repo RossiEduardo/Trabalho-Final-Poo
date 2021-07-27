@@ -7,6 +7,7 @@ import br.usp.poo.allpet.service.AnuncioService;
 import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
@@ -43,10 +44,11 @@ public class AnuncioController {
                           @RequestParam String descricao,
                           @RequestParam String telefone,
                           @RequestParam String email,
-                          @RequestParam Animal animal) {
+                          @RequestParam Animal animal,
+                          @RequestParam MultipartFile foto) {
         String user_mail = AuthUser.getEmail();
         
-        boolean resultado = anuncioService.cadastrar(titulo, user_mail, cidade, endereco, descricao, telefone, animal, email);
+        boolean resultado = anuncioService.cadastrar(titulo, user_mail, cidade, endereco, descricao, telefone, animal, email, foto);
         
         //se deu algum erro ao criar o anuncio o usuário é redirecionado para a página de cadastro de anúncios novamente
         if(resultado == false)

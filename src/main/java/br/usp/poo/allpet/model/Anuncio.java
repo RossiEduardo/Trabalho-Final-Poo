@@ -49,4 +49,7 @@ public class Anuncio {
 	@Column(nullable = false)
 	private Short usuario;
 	
+	@Column(length = 1000000000, nullable = true)
+	private byte[] bytes;
+	
 }

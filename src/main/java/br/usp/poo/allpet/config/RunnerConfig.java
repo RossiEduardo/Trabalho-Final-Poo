@@ -44,6 +44,7 @@ public class RunnerConfig {
 			usuarioRepository.saveAll(List.of(usuario1, usuario2)); //Salvando no Banco de Dados
 			
 			//Criando anúncios 
+			/*
 			Anuncio anuncio = new Anuncio(
 					null,
 					"Cachorro vira-lata caramelo",
@@ -53,7 +54,9 @@ public class RunnerConfig {
 					"164565161",
 					"lucasf.almeida@usp.br",
 					Animal.CACHORRO,
-					(short) 1
+					(short) 1,
+					
+					null
 			);
 
 			Anuncio anuncio2 = new Anuncio(
@@ -65,11 +68,13 @@ public class RunnerConfig {
 					"164565161",
 					"lucasf.almeida@usp.br",
 					Animal.GATO,
-					(short) 2
+					(short) 2,
+					
+					null
 			);
 			
 			anuncioRepository.saveAll(List.of(anuncio, anuncio2)); //Salvando no Banco de Dados
-			
+			*/
 			Image img = new Image(
 					null,
 					"a",
