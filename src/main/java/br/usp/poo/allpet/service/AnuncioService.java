@@ -10,6 +10,7 @@ import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -21,6 +22,13 @@ public class AnuncioService {
     
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    public ModelAndView getCriarPage() {
+        String email = AuthUser.getEmail();
+        Usuario usuario = usuarioRepository.findByEmail(email);
+        AnuncioViewModel avm = new AnuncioViewModel(usuario, Animal.values());
+        return new ModelAndView("anuncio/criar", avm.getParams());
+    }
 
     public AnuncioViewModel getAnuncio(int id) {
         return new AnuncioViewModel(anuncioRepository.getById(id));

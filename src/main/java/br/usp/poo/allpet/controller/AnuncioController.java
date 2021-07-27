@@ -31,8 +31,7 @@ public class AnuncioController {
     //Página para criação de um anúncio
     @GetMapping("/criar")
     public ModelAndView criar() {
-    	AnuncioViewModel avm = new AnuncioViewModel(Animal.values());
-        return new ModelAndView("anuncio/criar", avm.getParams());
+        return anuncioService.getCriarPage();
     }
     
     //Recebe os dados do anúncio e adiciona no banco de dados
