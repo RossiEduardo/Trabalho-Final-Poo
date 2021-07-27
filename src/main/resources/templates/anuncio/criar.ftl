@@ -21,7 +21,7 @@
                 
                 <form action="anuncio/criar" method="post">
                     Título: <input type="text" name="titulo" />
-                    Descrição: <textarea name="descricao"></textarea>
+                    Descrição: <textarea name="descricao" rows="3"></textarea>
                     Endereço: <input type="text" name="endereco" />
                     Cidade: <input type="text" name="cidade" />
                     Telefone: <input type="tel" name="telefone" />
