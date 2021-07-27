@@ -8,7 +8,7 @@
 
         </style>
     </head>
-    <body>
+    <body class="preload">
         <#include "/components/header.ftl"/>
         <#include "/components/user-space.ftl"/>
 
@@ -20,12 +20,12 @@
                     <p class="${sucesso?then('mensagem-sucesso','mensagem-erro')}">${retorno}</p>
                 </#if>
                 
-                <form action="cadastro" method="post">
+                <form action="/cadastro" method="post">
                     <label for="nome">Nome</label>
                     <input type="text" name="nome" placeholder="Fulano da Silva" />
 
                     <label for="cidade">Cidade</label>
-                    <input type="text" name="cidade" placeholder="São Paulo" />
+                    <input type="text" name="cidade" placeholder="São Carlos" />
                     
                     <label for="cpf">CPF</label>
                     <input type="text" name="cpf" placeholder="xxx.xxx.xxx-xx" />
