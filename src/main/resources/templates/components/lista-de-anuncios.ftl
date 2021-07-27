@@ -2,7 +2,7 @@
     <#list anuncios as anuncio>
         <a href="/anuncio/${anuncio.id}">
             <li>
-                <img class="anuncio-post-imagem" src="/img/${anuncio.animal?lower_case}.png" alt="Foto de um ${anuncio.animal?lower_case}." />
+                <img class="anuncio-post-imagem" src="${anuncio.imagem}" alt="Foto de um ${anuncio.animal?lower_case}." />
                 
                 <div class="anuncio-post-container">
                     <h3>${anuncio.titulo}</h3>

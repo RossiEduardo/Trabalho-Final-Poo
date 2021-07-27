@@ -42,6 +42,7 @@ public class AnuncioService {
         byte[] bytes=null;
 		try {
 			bytes = foto.getBytes();
+			System.out.println("\n\n"+ bytes.length);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

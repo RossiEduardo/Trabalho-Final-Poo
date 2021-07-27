@@ -19,12 +19,6 @@ public class AnuncioViewModel {
 
     public AnuncioViewModel(Anuncio anuncio) {
         params.put("anuncio", anuncio);
-        
-        byte[] imgBytes = Base64.getEncoder().encode (anuncio.getBytes());
-        String img = new String (imgBytes);
-		img = "data:image/png;base64," + img;
-        
-        params.put("image", img);
     }
 
     public AnuncioViewModel(List<Anuncio> anuncios) {

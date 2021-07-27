@@ -47,6 +47,7 @@ public class AnuncioController {
                           @RequestParam Animal animal,
                           @RequestParam MultipartFile foto) {
         String user_mail = AuthUser.getEmail();
+        System.out.println("ENTREI \n\n");
         
         boolean resultado = anuncioService.cadastrar(titulo, user_mail, cidade, endereco, descricao, telefone, animal, email, foto);
         

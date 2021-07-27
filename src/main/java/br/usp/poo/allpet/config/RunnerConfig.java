@@ -42,7 +42,7 @@ public class RunnerConfig {
 			usuarioRepository.saveAll(List.of(usuario1, usuario2)); //Salvando no Banco de Dados
 			
 			//Criando anúncios 
-			
+			/*
 			Anuncio anuncio = new Anuncio(
 					null,
 					"Cachorro vira-lata caramelo",
@@ -70,9 +70,9 @@ public class RunnerConfig {
 					
 					null
 			);
-			
 			anuncioRepository.saveAll(List.of(anuncio, anuncio2)); //Salvando no Banco de Dados
-			
+
+			*/
 			
 		};
 	}
