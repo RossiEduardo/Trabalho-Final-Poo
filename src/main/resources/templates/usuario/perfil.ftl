@@ -36,24 +36,26 @@
 
                 <form action="/perfil" method="post" id="form-atualizar-perfil">
                     <label for="nome">Nome</label>
-                    <input type="text" name="nome" value="${usuario.nome}" />
+                    <input size="4" type="text" name="nome" value="${usuario.nome}" />
 
                     <label for="cidade">Cidade</label>
-                    <input type="text" name="cidade" value="${usuario.cidade}" />
+                    <input size="4" type="text" name="cidade" value="${usuario.cidade}" />
                     
                     <label for="cpf">CPF</label>
-                    <input type="text" name="cpf" value="${usuario.cpf}" />
+                    <input size="11" type="text" name="cpf" value="${usuario.cpf}" />
 
                     <label for="telefone">Telefone</label>
-                    <input type="tel" name="telefone" value="${usuario.telefone}" />
+                    <input size="8" type="tel" name="telefone" value="${usuario.telefone}" />
                     
                     <label for="email">E-mail</label>
                     <input type="email" name="email" value="${usuario.email}" />
 
                     <label for="senha">Senha</label>
-                    <input type="password" name="senha" />
+                    <input size="3" type="password" name="senha" />
+
+                    <input type="hidden" name="id" value="${usuario.id}">
                     
-                    <input type="submit" value="Salvar" />
+                    <input type="submit" disabled="true" value="Salvar" />
                 </form>
 
                 <h3>Minhas postagens</h3>
