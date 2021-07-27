@@ -20,7 +20,7 @@
             }
         </style>
     </head>
-    <body>
+    <body class="preload">
         <#include "/components/header.ftl"/>
         <#include "/components/user-space.ftl"/>
 

@@ -1,0 +1,54 @@
+#lista-de-anuncios {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+#lista-de-anuncios > a {
+    margin-bottom: 16px;
+}
+
+#lista-de-anuncios > a:last-child {
+    margin-bottom: 0;
+}
+
+#lista-de-anuncios li {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 160px;
+    align-items: center;
+    background: #fff3e0;
+    border-radius: 5px;
+}
+
+#lista-de-anuncios li:hover,
+#lista-de-anuncios li:focus {
+    background: #ffe0b2;
+}
+
+#lista-de-anuncios .anuncio-post-imagem {
+    margin-right: 20px;
+    width: 40%;
+}
+
+#lista-de-anuncios .anuncio-post-container {
+    flex-grow: 1;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#lista-de-anuncios .anuncio-post-descricao {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+#lista-de-anuncios .anuncio-post-endereco {
+    font-size: 18px;
+}
