@@ -33,10 +33,4 @@ public class IndexController {
 		return new ModelAndView("index/contato", vm.getParams());
 	}
 
-	@GetMapping("/denuncia")
-	public ModelAndView getDenuncia() {
-		IndexViewModel vm = indexService.getIndexViewModel();
-		return new ModelAndView("index/denuncia", vm.getParams());
-	}
-
 }

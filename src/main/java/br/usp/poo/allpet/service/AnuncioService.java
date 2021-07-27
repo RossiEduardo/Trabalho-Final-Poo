@@ -32,7 +32,9 @@ public class AnuncioService {
     }
 
     public AnuncioViewModel getAnuncio(int id) {
-        return new AnuncioViewModel(anuncioRepository.getById(id));
+    	if (anuncioRepository.existsById(id))
+    		return new AnuncioViewModel(anuncioRepository.getById(id));
+    	return new AnuncioViewModel();
     }
     
     //Cadastrar um anúncio
@@ -50,7 +52,6 @@ public class AnuncioService {
         byte[] bytes=null;
 		try {
 			bytes = foto.getBytes();
-			System.out.println("\n\n"+ bytes.length);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

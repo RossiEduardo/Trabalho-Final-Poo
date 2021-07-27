@@ -17,6 +17,11 @@ a {
     text-decoration: none;
 }
 
+p {
+    text-align: justify;
+    text-indent: 20px;
+}
+
 .unselectable {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */

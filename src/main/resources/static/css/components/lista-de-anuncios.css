@@ -29,8 +29,10 @@
 }
 
 #lista-de-anuncios .anuncio-post-imagem {
-    margin-right: 20px;
+    margin: 0 20px;
     width: 40%;
+    height: 80%;
+    object-fit: cover;
 }
 
 #lista-de-anuncios .anuncio-post-container {

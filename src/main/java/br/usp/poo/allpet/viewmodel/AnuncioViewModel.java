@@ -13,6 +13,8 @@ public class AnuncioViewModel {
 
     private Map<String, Object> params = new HashMap<>();
 
+    public AnuncioViewModel() {}
+    
     public AnuncioViewModel(Anuncio anuncio) {
         params.put("anuncio", anuncio);
     }
