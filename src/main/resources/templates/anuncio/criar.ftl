@@ -20,19 +20,33 @@
                 </#if>
                 
                 <form action="anuncio/criar" method="post">
-                    Título: <input type="text" name="titulo" />
-                    Descrição: <textarea name="descricao" rows="3"></textarea>
-                    Endereço: <input type="text" name="endereco" />
-                    Cidade: <input type="text" name="cidade" />
-                    Telefone: <input type="tel" name="telefone" />
-                    E-mail: <input type="email" name="email" />
-                    Animal:
+
+                    <label for="titulo">Título</label>
+                    <input type="text" name="titulo" />
+                    
+                    <label for="descricao">Descrição</label>
+                    <textarea name="descricao" rows="3"></textarea>
+                    
+                    <label for="endereco">Endereço</label>
+                    <input type="text" name="endereco" />
+                    
+                    <label for="cidade">Cidade</label>
+                    <input type="text" name="cidade" />
+                    
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" name="telefone" />
+                    
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" />
+                    
+                    <label for="animal">Animal</label>
                     <select name="animal">
                         <#list animais as animal>
                             <option>${animal?capitalize}</option>
                         </#list>
                     </select>
-                    <input type="submit" />
+                    
+                    <input type="submit" value="Criar anúncio"/>
                 </form>
             </div>
         </main>
