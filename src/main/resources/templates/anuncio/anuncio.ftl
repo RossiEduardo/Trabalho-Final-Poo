@@ -27,7 +27,7 @@
                 <#if anuncio??>
                     <h2>${anuncio.titulo}</h2>
                     
-                    <img class="anuncio-imagem" src="/img/${anuncio.animal?lower_case}.png" alt="Foto de um ${anuncio.animal?lower_case}." />
+                    <img class="anuncio-imagem" src="${anuncio.imagem}" alt="Foto de um ${anuncio.animal?lower_case}." />
                     
                     <div class="anuncio-details-container"> 
                         <h3>Descrição</h3>

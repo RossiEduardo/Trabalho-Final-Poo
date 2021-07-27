@@ -12,7 +12,6 @@ import br.usp.poo.allpet.repository.UsuarioRepository;
 import br.usp.poo.allpet.security.AuthUser;
 import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
 
-
 @Service
 public class AnuncioService {
 
@@ -36,13 +35,25 @@ public class AnuncioService {
     //Cadastrar um anúncio
     public boolean cadastrar(String titulo, String user_email, String cidade,
                           String endereco, String descricao, String telefone,
-                          Animal animal, String email) {
+                          Animal animal, String email, MultipartFile foto) {
+    	
     	if(titulo.length() == 0 || user_email.length() == 0 || cidade.length() == 0 || endereco.length() == 0
-    			|| descricao.length() == 0 || telefone.length() == 0 || email.length() == 0) {
+    			|| descricao.length() == 0 || telefone.length() == 0 || email.length() == 0 || foto == null) {
     		return false;
     	}
+    	
         Usuario usuario = usuarioRepository.findByEmail(user_email);
-        Anuncio newAnuncio = new Anuncio(null, titulo, descricao, endereco, cidade, telefone, email, animal, usuario.getId());
+        
+        byte[] bytes=null;
+		try {
+			bytes = foto.getBytes();
+			System.out.println("\n\n"+ bytes.length);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+        Anuncio newAnuncio = new Anuncio(null, titulo, descricao, endereco, cidade, telefone, email, animal, usuario.getId(), bytes);
         anuncioRepository.save(newAnuncio);
 		return true;
     }

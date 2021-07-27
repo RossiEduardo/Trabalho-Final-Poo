@@ -21,7 +21,7 @@
                     </#if>
                 </#if>
                 
-                <form action="/anuncio/criar" method="post">
+                <form action="/anuncio/criar" method="post" enctype="multipart/form-data">
 
                     <label for="titulo">Título</label>
                     <input maxlength="60" type="text" name="titulo" />
@@ -47,6 +47,10 @@
                             <option value="${animal}">${animal?capitalize}</option>
                         </#list>
                     </select>
+                    
+                    <label for="foto">Foto</label>
+                    <input type="file" name="foto" />
+                    
                     
                     <input type="submit" value="Criar anúncio"/>
                 </form>
