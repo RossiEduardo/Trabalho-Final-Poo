@@ -9,9 +9,6 @@ import java.util.Map;
 import br.usp.poo.allpet.model.Anuncio;
 import br.usp.poo.allpet.model.Usuario;
 import br.usp.poo.allpet.security.AuthUser;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 public class UsuarioViewModel extends ViewModel{
 
@@ -36,8 +33,7 @@ public class UsuarioViewModel extends ViewModel{
     //adiciona o email na hashMap e retorna todos os parâmetros
 	@Override
 	public Map<String, Object> getParams() {
-		AuthUser authUser = new AuthUser();
-		String authEmail = authUser.getEmail();
+		String authEmail = AuthUser.getEmail();
 		params.put("username", authEmail);
 		return params;
 	}

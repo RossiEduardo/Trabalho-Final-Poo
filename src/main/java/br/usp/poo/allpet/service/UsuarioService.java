@@ -1,16 +1,14 @@
 package br.usp.poo.allpet.service;
 
-import br.usp.poo.allpet.model.Usuario;
-import br.usp.poo.allpet.repository.AnuncioRepository;
-import br.usp.poo.allpet.repository.UsuarioRepository;
-import br.usp.poo.allpet.viewmodel.UsuarioViewModel;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
+import br.usp.poo.allpet.model.Usuario;
+import br.usp.poo.allpet.repository.AnuncioRepository;
+import br.usp.poo.allpet.repository.UsuarioRepository;
+import br.usp.poo.allpet.viewmodel.UsuarioViewModel;
 
 @Service
 public class UsuarioService {

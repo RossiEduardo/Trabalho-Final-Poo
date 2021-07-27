@@ -1,5 +1,9 @@
 package br.usp.poo.allpet.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
+
 import br.usp.poo.allpet.enums.Animal;
 import br.usp.poo.allpet.model.Anuncio;
 import br.usp.poo.allpet.model.Usuario;
@@ -7,14 +11,6 @@ import br.usp.poo.allpet.repository.AnuncioRepository;
 import br.usp.poo.allpet.repository.UsuarioRepository;
 import br.usp.poo.allpet.security.AuthUser;
 import br.usp.poo.allpet.viewmodel.AnuncioViewModel;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.util.Base64;
-import java.util.List;
 
 @Service
 public class AnuncioService {
@@ -28,7 +24,7 @@ public class AnuncioService {
     public ModelAndView getCriarPage() {
         String email = AuthUser.getEmail();
         Usuario usuario = usuarioRepository.findByEmail(email);
-        AnuncioViewModel avm = new AnuncioViewModel(usuario, Animal.values());
+        AnuncioViewModel avm = new AnuncioViewModel(usuario);
         return new ModelAndView("anuncio/criar", avm.getParams());
     }
 
@@ -64,12 +60,17 @@ public class AnuncioService {
     
     //Busca os anúncios dado uma cidade e um animal
     public AnuncioViewModel buscar(String cidade, Animal animal) {
+        if (animal == null && (cidade == null || cidade.length() == 0))
+            return new AnuncioViewModel(anuncioRepository.findAll());
+    	
         if (cidade != null && cidade.length() > 0 && animal != null)
             return new AnuncioViewModel(anuncioRepository.getByCidadeAnimal(cidade, animal));
+        
         if (animal == null)
             return new AnuncioViewModel(anuncioRepository.getByCidade(cidade));
 
         return new AnuncioViewModel(anuncioRepository.getByAnimal(animal));
+        
     }
     
     //Deleta um anúncio pelo id

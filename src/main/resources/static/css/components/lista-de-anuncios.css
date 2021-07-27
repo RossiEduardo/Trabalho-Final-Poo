@@ -52,3 +52,7 @@
 #lista-de-anuncios .anuncio-post-endereco {
     font-size: 18px;
 }
+
+#sem-anuncios {
+    text-align: center;
+}
