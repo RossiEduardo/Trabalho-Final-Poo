@@ -39,12 +39,9 @@ public class AnuncioService {
     	}
         Usuario usuario = usuarioRepository.findByEmail(user_email);
         
-        String fotoBase64 = null;
         byte[] bytes=null;
 		try {
 			bytes = foto.getBytes();
-			//fotoBase64 = new String ( Base64.getEncoder().encode( foto.getBytes() ) );
-			//fotoBase64 = "data:image/png;base64," + fotoBase64;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
